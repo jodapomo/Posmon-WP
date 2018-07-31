@@ -1,0 +1,191 @@
+.main
+	overflow: hidden
+	.empresa
+		.contenedor-titulo
+			background: url('../img/bgE3.png')
+			background-size: cover
+			background-position: center 0
+			background-repeat: no-repeat
+			background-attachment: fixed
+			// text-align: center
+			.titulo
+				color: #f2f2f2
+				font-size: 90px
+				font-weight: 700
+				margin-top: 220px
+				margin-bottom: 80px
+				text-shadow: 0 0 15px rgba(0,0,0,0.9)
+			.logo
+				text-align: right
+				padding-right: 80px
+				padding-bottom: 50px
+		.quienes-somos
+			.titulo
+				text-align: center
+				font-size: 30px
+				margin-top: 20px
+				margin-bottom: 10px
+				color: $azul
+			.parrafo
+				text-align: center
+				font-size: 18px
+				line-height: 35px
+				text-align: justify
+		.valores
+			text-align: center
+			margin-bottom: 40px
+			.titulo
+				color: $azul
+				text-align: center
+				font-size: 30px
+				margin-bottom: 10px
+			ul
+				list-style: none
+				li
+					text-align: center
+					p
+						background: #000
+						color: #fff
+						display: inline-block
+						font-size: 20px
+						text-shadow: 0 0 6px rgba(0,0,0,0.9)
+						line-height: 18px
+						margin: 0
+						width: 160px
+						padding: 71px 0
+						&.val1
+							background: $verde
+						&.val2
+							background: $amarillo
+						&.val3
+							background: $naranja
+						&.val4
+							background: $rojo
+		.mision-vision
+			.mision,
+			.vision
+				padding: 0
+				margin: 0 40px
+				margin-bottom: 40px
+				padding: 20px
+				.titulo
+					text-align: center
+					margin-top: 0	
+					margin-bottom: 20px
+					font-size: 30px
+					color: $azul
+				p
+					text-align: justify
+	.contacto
+		.contenedor-titulo
+			background: url('../img/bgE4.png')
+			background-size: cover
+			background-position: center 0
+			background-repeat: no-repeat
+			background-attachment: fixed
+			.titulo
+				color: #f2f2f2
+				font-size: 90px
+				font-weight: 700
+				margin-top: 150px
+				margin-bottom: 50px
+				text-shadow: 0 0 15px rgba(0,0,0,0.9)
+			.logo
+				text-align: right
+				padding-right: 80px
+				padding-bottom: 50px
+		.formulario
+			margin-top: 50px
+			text-align: center
+			input,
+			textarea
+				border: 2px solid #cecece
+				border-radius: 5px
+				padding: 15px 20px
+				font-size: 20px
+				color: #000
+				margin-bottom: 20px
+				width: 100%
+				outline: none
+				&:focus
+					border: 2px solid $azul
+			.boton
+				background: $azul
+				border: 5px solid transparent
+				color: #fff
+				width: 141px
+				min-width: 100px
+				margin-bottom: 40px
+				transition: all .3s ease-in-out
+				&:focus	
+					border: 5px solid #094d92
+				&:hover
+					background: #094d92
+			textarea
+				max-width: 100%
+				min-width: 100%
+				min-height: 150px
+				max-height: 350px
+		.contenedor-datos
+			padding: 0
+			.datos
+				background: #fff
+				-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3)
+				box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3)
+				padding: 20px
+				width: 100%
+				max-width: 400px
+				text-align: center
+				margin: 40px auto
+				margin-bottom: 0
+				font-size: 20px
+				i
+					font-size: 25px
+			.logo
+				text-align: center
+				margin-bottom: 15px
+
+@media screen and (max-width: 992px)
+	.main
+		.empresa
+			.valores
+				margin-bottom: 0
+				.titulo
+					margin-bottom: 20px
+				li
+					margin-bottom: 10px
+			.mision-vision
+				.mision
+					margin-bottom: 0
+
+@media screen and (max-width: 640px)
+	.main
+		.empresa
+			.quienes-somos
+				p
+					font-size: 16px
+		.contacto,.empresa
+			.contenedor-titulo
+				.titulo
+					font-size: 14vw
+		.empresa
+			.mision-vision
+				.mision,.vision
+					margin-right: 0
+					margin-left: 0
+
+@media screen and (max-width: 420px)
+	.main
+		.empresa
+			.quienes-somos
+				.parrafo
+					padding: 0 15px
+		.contacto,.empresa
+			.contenedor-titulo
+				.titulo
+					// font-size: 14vw
+		.empresa
+			.mision-vision
+				.mision,.vision
+					margin-right: 0
+					margin-left: 0
