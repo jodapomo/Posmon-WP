@@ -5,23 +5,51 @@
     <section class="lineas">
         <div class="container">
             <div class="row">
-                <div class="linea salud col-sm-6 col-md-4">
+
+                <?php 
+                    $args = array(
+                        'posts_per_page'    => -1,
+                        'post_type'         => 'lineas',
+                        'order'           => 'ASC',
+                    );
+
+                    $lineas = new WP_Query( $args );
+                ?>
+                    
+                
+                <?php while($lineas->have_posts()): $lineas->the_post(); ?>
+
+                <div class="linea col-sm-6 col-md-4">
                     <div class="contenedor">
-                        <a href="salud.html">
+                        <a href="<?php the_permalink() ?>">
                             <div class="fondo">
-                                <img src="img/lineas/salud/bg.png" alt="">
+                                <?php
+                                    $fondo = get_post_meta( get_the_ID(),'posmon_campos_lineas_index_bg_image', true);
+                                    if($fondo) { 
+                                ?>
+                                    <img src="<?php echo $fondo ?>" alt="">
+
+                                <?php } ?>
                             </div>
-                            <div class="nombre">
-                                <p>Salud</p>
+                            <div class="nombre" style="background: <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_principal', true) ?>;">
+                                <p><?php the_title() ?></p>
                             </div>
                             <div class="persona">
-                                <img src="img/lineas/salud/p.png" alt="">
+                                <?php 
+                                    $modelo = get_post_meta( get_the_ID(),'posmon_campos_lineas_index_modelo_image', true);
+                                    if($modelo) { 
+                                ?>
+                                    <img src="<?php echo $modelo ?>" alt="">
+
+                                <?php } ?>
                             </div>
                         </a>
                     </div>
                 </div>
 
-                <div class="linea empresarial col-sm-6 col-md-4">
+                <?php endwhile; wp_reset_postdata(); ?>
+
+                <!-- <div class="linea empresarial col-sm-6 col-md-4">
                     <div class="contenedor">
                         <div class="fondo">
                             <img src="img/lineas/empresarial/bg.png" alt="">
@@ -89,7 +117,7 @@
                             <img src="img/lineas/belleza/p.png" alt="">
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
