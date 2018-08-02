@@ -26,6 +26,17 @@ function posmon_scripts() {
     wp_enqueue_style( 'bootstrap' );
     wp_enqueue_style( 'flexslider' );
     wp_enqueue_style( 'main-styles' );
+
+    // Register Scripts
+    wp_register_script(  'smoothScroll', get_template_directory_uri() . "/js/SmoothScroll.min.js", array(), '1.0', true);
+    wp_register_script(  'flexsliderJs', get_template_directory_uri() . "/js/jquery.flexslider-min.js", array(), '1.0', true);
+    wp_register_script(  'mainScripts', get_template_directory_uri() . "/js/scripts.js", array(), '1.0', true);
+
+    // Enqueue Scripts
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('smoothScroll');
+    wp_enqueue_script('flexsliderJs');
+    wp_enqueue_script('mainScripts');
 }
 
 add_action( 'wp_enqueue_scripts', 'posmon_scripts' );

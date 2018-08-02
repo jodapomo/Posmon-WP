@@ -21,10 +21,8 @@
 	</footer>
 
 
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/SmoothScroll.min.js"></script>
-	<script src="js/jquery.flexslider-min.js"></script>
-	<script src="js/scripts.js"></script>
+	
+	<!-- <script src="/js/bootstrap.min.js"></script> -->
+	<?php wp_footer(); ?>
 </body>
 </html>

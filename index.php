@@ -32,9 +32,17 @@
                                 <?php } ?>
                             </div>
                             <div class="nombre" style="background: <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_principal', true) ?>;">
-                                <p><?php the_title() ?></p>
+                                <h2><?php the_title() ?></h2>
                             </div>
-                            <div class="persona">
+
+                            <?php 
+                                $offset = intval(get_post_meta( get_the_ID(),'posmon_campos_lineas_index_pos_modelo', true));
+                            
+                                $left = 35 + $offset;
+                            
+                            ?>
+
+                            <div class="persona" style="left: <?php echo $left ?>%">
                                 <?php 
                                     $modelo = get_post_meta( get_the_ID(),'posmon_campos_lineas_index_modelo_image', true);
                                     if($modelo) { 
@@ -48,76 +56,6 @@
                 </div>
 
                 <?php endwhile; wp_reset_postdata(); ?>
-
-                <!-- <div class="linea empresarial col-sm-6 col-md-4">
-                    <div class="contenedor">
-                        <div class="fondo">
-                            <img src="img/lineas/empresarial/bg.png" alt="">
-                        </div>
-                        <div class="nombre">
-                            <p>Empresarial</p>
-                        </div>
-                        <div class="persona">
-                            <img src="img/lineas/empresarial/p.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linea hoteleria col-sm-6 col-md-4">
-                    <div class="contenedor">
-                        <div class="fondo">
-                            <img src="img/lineas/hoteleria/bg.png" alt="">
-                        </div>
-                        <div class="nombre">
-                            <p>Hotelería</p>
-                        </div>
-                        <div class="persona">
-                            <img src="img/lineas/hoteleria/p.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linea operativa col-sm-6 col-md-4">
-                    <div class="contenedor">
-                        <div class="fondo">
-                            <img src="img/lineas/operativa/bg.png" alt="">
-                        </div>
-                        <div class="nombre">
-                            <p>Operativa</p>
-                        </div>
-                        <div class="persona">
-                            <img src="img/lineas/operativa/p.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linea gastronomia col-sm-6 col-md-4">
-                    <div class="contenedor">
-                        <div class="fondo">
-                            <img src="img/lineas/gastronomia/bg.png" alt="">
-                        </div>
-                        <div class="nombre">
-                            <p>Gastronomía</p>
-                        </div>
-                        <div class="persona">
-                            <img src="img/lineas/gastronomia/p.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linea belleza col-sm-6 col-md-4">
-                    <div class="contenedor">
-                        <div class="fondo">
-                            <img src="img/lineas/belleza/bg.png" alt="">
-                        </div>
-                        <div class="nombre">
-                            <p>Belleza & Bienestar</p>
-                        </div>
-                        <div class="persona">
-                            <img src="img/lineas/belleza/p.png" alt="">
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
