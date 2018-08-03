@@ -72,53 +72,56 @@
                                 $imagen_modelo = esc_html( $slider['image_modelo'] );
                             }
 
-                            if ( $type == 'blur-bg' ) { ?>
-                                <li class="slider blur-bg" style="background-image: url(<?php echo $imagen ?>)">
-                                    <div class="row contenedor">
-                                        <div class="texto col-md-6">
-                                            <div class="content">
-                                                <div class="titulo">
-                                                    <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
-                                                </div>
-                                                <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="imagen col-md-6">
-                                            <img src="<?php echo $imagen_modelo ?>" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php 
-                            } else if ($type == 'full-bg' ) { ?>
-                                <li class="slider full-bg" style="background-image: url(<?php echo $imagen ?>)">
-                                    <div class="row contenedor">
-                                        <div class="texto col-md-12">
-                                            <div class="content">
-                                                <div class="titulo">
-                                                    <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
-                                                </div>
-                                                <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php 
-                            } else if ($type == 'half-img' ) { ?>
-                                <li class="slider half-img">
-                                    <div class="row contenedor">
-                                        <div class="texto col-md-5">
-                                            <div class="content">
-                                                <div class="titulo">
-                                                    <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
-                                                </div>
+                            if( $title && $imagen ) {
 
-                                                <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
-                                            </div>	
+                                if ( $type == 'blur-bg' ) { ?>
+                                    <li class="slider blur-bg" style="background-image: url(<?php echo $imagen ?>)">
+                                        <div class="row contenedor">
+                                            <div class="texto col-md-6">
+                                                <div class="content">
+                                                    <div class="titulo">
+                                                        <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
+                                                    </div>
+                                                    <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="imagen col-md-6">
+                                                <img src="<?php echo $imagen_modelo ?>" alt="">
+                                            </div>
                                         </div>
-                                        <div class="imagen col-md-7" style="background-image: url(<?php echo $imagen ?>)"></div>
-                                    </div>
-                                </li>
-                            <?php 
+                                    </li>
+                                <?php 
+                                } else if ($type == 'full-bg' ) { ?>
+                                    <li class="slider full-bg" style="background-image: url(<?php echo $imagen ?>)">
+                                        <div class="row contenedor">
+                                            <div class="texto col-md-12">
+                                                <div class="content">
+                                                    <div class="titulo">
+                                                        <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
+                                                    </div>
+                                                    <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php 
+                                } else if ($type == 'half-img' ) { ?>
+                                    <li class="slider half-img">
+                                        <div class="row contenedor">
+                                            <div class="texto col-md-5">
+                                                <div class="content">
+                                                    <div class="titulo">
+                                                        <h1 class="med-title" style="color: <?php echo $col_title ?>"><?php echo $title ?></h1>
+                                                    </div>
+
+                                                    <p class="descripcion" style="color: <?php echo $col_desc ?>"><?php echo $desc ?></p>
+                                                </div>	
+                                            </div>
+                                            <div class="imagen col-md-7" style="background-image: url(<?php echo $imagen ?>)"></div>
+                                        </div>
+                                    </li>
+                                <?php 
+                                }
                             }
                         }
                     ?>
@@ -149,7 +152,176 @@
 
         <div class="row">
             <div class="catalogo col-md-12">
-                <div class="item">
+
+                <?php 
+                    global $post;
+                    $post_slug = $post->post_name;
+
+                    $parent = get_term_by('slug', $post_slug, 'linea-categoria');
+
+                    if ($parent) {
+                        $parentId = $parent->term_id;
+
+                        $categorias = get_terms(array(
+                            'taxonomy'      => 'linea-categoria',
+                            'hide_empty'    => false, 
+                            'parent'        => $parentId,
+                        ));
+                    
+                        foreach ($categorias as $categoria) {
+                    
+                            ?>
+                                <div class="item">
+                                    <div class="row header">
+                                        <div class="sesg" style="background: <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>">
+                                        </div>
+                                        <div class="textos">
+                                            <h3><?php echo $categoria->name ?></h3>
+                                            <p><?php echo $categoria->description ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="product-category-grid">
+                                            <div class="grid">
+                                                <div class="row items">
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                        <div class="item">
+                                                            <div class="featured-image">
+                                                                <img src="img\productos\salud\1\1.jpg" alt="">
+                                                            </div>
+                                                            <div class="short-description">
+                                                                <div class="reference">
+                                                                    <span>Ref.</span>
+                                                                    <h3 class="name">Mediclásica</h3>
+                                                                </div>
+                                                                <div class="gender">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-female"></i>
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        femenino
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                        <div class="item">
+                                                            <div class="featured-image">
+                                                                <img src="img\productos\salud\2\1.jpg" alt="">
+                                                            </div>
+                                                            <div class="short-description">
+                                                                <div class="reference">
+                                                                    <span>Ref.</span>
+                                                                    <h3 class="name">Básica</h3>
+                                                                </div>
+                                                                <div class="gender">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-male"></i>
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        masculino
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                        <div class="item">
+                                                            <div class="featured-image">
+                                                                <img src="img\productos\salud\3\1.jpg" alt="">
+                                                            </div>
+                                                            <div class="short-description">
+                                                                <div class="reference">
+                                                                    <span>Ref.</span>
+                                                                    <h3 class="name">Odontoclásica</h3>
+                                                                </div>
+                                                                <div class="gender">
+                                                                    <div class="icon unisex">
+                                                                        <i class="fa fa-female"></i>
+                                                                        <i class="fa fa-male"></i>
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        unisex
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                        <div class="item">
+                                                            <div class="featured-image">
+                                                                <img src="img\productos\salud\2\1.jpg" alt="">
+                                                            </div>
+                                                            <div class="short-description">
+                                                                <div class="reference">
+                                                                    <span>Ref.</span>
+                                                                    <h3 class="name">Básica</h3>
+                                                                </div>
+                                                                <div class="gender">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-female"></i>
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        femenino
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                        <div class="item">
+                                                            <div class="featured-image">
+                                                                <img src="img\productos\salud\2\1.jpg" alt="">
+                                                            </div>
+                                                            <div class="short-description">
+                                                                <div class="reference">
+                                                                    <span>Ref.</span>
+                                                                    <h3 class="name">Básica</h3>
+                                                                </div>
+                                                                <div class="gender">
+                                                                    <div class="icon">
+                                                                        <i class="fa fa-female"></i>
+                                                                    </div>
+                                                                    <div class="text">
+                                                                        femenino
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row paginator">
+                                                <nav>
+                                                    <a class="control prev" href="#" tabindex="-1">
+                                                        <span class="icon-container"><i class="fa fa-angle-left"></i></span>
+                                                        <span class="text-container">Anterior</span>
+                                                    </a>
+                                                    <div class="pages-container">
+                                                        <ul class="pagination">
+                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <a class="control next" href="#">
+                                                        <span class="text-container">Siguiente</span>
+                                                        <span class="icon-container"><i class="fa fa-angle-right"></i></span>
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php 
+                        }
+                    }
+				?>
+
+                
+
+                <!-- <div class="item">
                     <div class="row header">
                         <div class="sesg" style="background: #004777;">
                         </div>
@@ -200,11 +372,6 @@
                                         <div class="product-thumbnail">
                                                 <img src="img\productos\salud\1\5.jpg" alt="">
                                         </div>
-                                        <!-- <div class="filling-empty-space"></div>
-                                        <div class="filling-empty-space"></div>
-                                        <div class="filling-empty-space"></div>
-                                        <div class="filling-empty-space"></div>
-                                        <div class="filling-empty-space"></div> -->
                                     </div>
                                 </div>
                             </div>
@@ -225,9 +392,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="item">
+                <!-- <div class="item">
                     <div class="row header">
                         <div class="sesg" style="background: #004777;">
                         </div>
@@ -369,9 +536,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="item">
+                <!-- <div class="item">
                     <div class="row header">
                         <div class="sesg" style="background: #004777;">
                         </div>
@@ -552,7 +719,7 @@
                                 </div>
                             </div>
                     </div>
-                </div>
+                </div>  -->
 
             </div>
         </div>
