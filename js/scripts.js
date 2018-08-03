@@ -228,6 +228,11 @@ $(document).ready(function(){
 		} , 600);
 	});
 
+	$("div.holder").jPages({
+		containerID : "itemContainer",
+		perPage : 8,
+	  });
+
 	// PRODUCT GALLERY
 	$('.product-content').productGallery();
 

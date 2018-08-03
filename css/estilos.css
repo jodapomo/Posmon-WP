@@ -1281,7 +1281,8 @@ div.catalogo {
   border-bottom: 0;
   padding-top: 15px; }
   .catalogo .product-category-grid .grid .item-container {
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    list-style-type: none; }
     .catalogo .product-category-grid .grid .item-container .item {
       height: 327px;
       border-radius: 5px;

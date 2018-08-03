@@ -156,6 +156,7 @@
                 <?php 
                     global $post;
                     $post_slug = $post->post_name;
+                    $lineaID   = get_the_ID();
 
                     $parent = get_term_by('slug', $post_slug, 'linea-categoria');
 
@@ -169,7 +170,6 @@
                         ));
                     
                         foreach ($categorias as $categoria) {
-                    
                             ?>
                                 <div class="item">
                                     <div class="row header">
@@ -183,8 +183,87 @@
                                     <div class="content">
                                         <div class="product-category-grid">
                                             <div class="grid">
-                                                <div class="row items">
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                <div id="itemContainer" class="row items itemContainer ">
+                                                    
+                                                    <?php 
+                                                        $args = array(
+                                                            'posts_per_page' => -1,
+                                                            'post_type' 	=> 'productos',
+                                                            'tax_query' 	=> array(
+                                                                'relation' => 'AND',
+                                                                array(
+                                                                    'taxonomy' 	=> 'linea-categoria',
+                                                                    'field' 	=> 'slug',
+                                                                    'terms'		=> array( $post_slug ),
+                                                                ),
+                                                                array(
+                                                                    'taxonomy' 	=> 'linea-categoria',
+                                                                    'field' 	=> 'slug',
+                                                                    'terms'		=> array( $categoria->slug ),
+                                                                ),
+                                                            ),
+                                                        );
+                                                        
+                                                        $productos = new WP_Query( $args );
+
+                                                        if($productos->have_posts()) {
+                                                            while($productos->have_posts()): $productos->the_post();
+                                                                ?>
+                                                                    <li class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( $lineaID,'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
+                                                                            <div class="featured-image">
+                                                                                <img src="<?php echo get_post_meta( get_the_ID() ,'posmon_campos_productos_imagen_destacada_producto', true) ?>" alt="">
+                                                                            </div>
+                                                                            <div class="short-description">
+                                                                                <div class="reference">
+                                                                                    <span>Ref.</span>
+                                                                                    <h3 class="name"><?php echo the_title() ?></h3>
+                                                                                </div>
+                                                                                <div class="gender">
+                                                                                    <?php 
+                                                                                        $gender = get_post_meta( get_the_ID() ,'posmon_campos_productos_genero_producto', true);
+
+                                                                                        if ( $gender == 'unisex' ) {
+                                                                                            ?>
+                                                                                                <div class="icon unisex">
+                                                                                                    <i class="fa fa-female"></i>
+                                                                                                    <i class="fa fa-male"></i>
+                                                                                                </div>
+                                                                                                <div class="text">
+                                                                                                    unisex
+                                                                                                </div>
+                                                                                            <?php 
+                                                                                        } else if ( $gender == 'femenino' ) {
+                                                                                            ?>
+                                                                                                <div class="icon">
+                                                                                                    <i class="fa fa-female"></i>
+                                                                                                </div>
+                                                                                                <div class="text">
+                                                                                                    femenino
+                                                                                                </div>
+                                                                                            <?php 
+                                                                                        } else {
+                                                                                            ?>
+                                                                                                <div class="icon">
+                                                                                                    <i class="fa fa-male"></i>
+                                                                                                </div>
+                                                                                                <div class="text">
+                                                                                                    masculino
+                                                                                                </div>
+                                                                                            <?php 
+                                                                                        }
+                                                                                    ?>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                <?php 
+                                                            endwhile; wp_reset_postdata();
+                                                        }
+                                                    ?>
+
+                                                    <!-- <div class="col-lg-3 col-md-4 col-sm-6 item-container">
                                                         <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\1\1.jpg" alt="">
@@ -289,9 +368,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
+                                            <div class="holder"></div>
                                             <div class="row paginator">
                                                 <nav>
                                                     <a class="control prev" href="#" tabindex="-1">
