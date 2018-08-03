@@ -185,7 +185,7 @@
                                             <div class="grid">
                                                 <div class="row items">
                                                     <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item">
+                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\1\1.jpg" alt="">
                                                             </div>
@@ -206,7 +206,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item">
+                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\2\1.jpg" alt="">
                                                             </div>
@@ -227,7 +227,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item">
+                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\3\1.jpg" alt="">
                                                             </div>
@@ -249,7 +249,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item">
+                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\2\1.jpg" alt="">
                                                             </div>
@@ -270,7 +270,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item">
+                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                             <div class="featured-image">
                                                                 <img src="img\productos\salud\2\1.jpg" alt="">
                                                             </div>
