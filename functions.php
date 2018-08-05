@@ -11,7 +11,6 @@ function posmon_scripts() {
     wp_register_style( 'google-font', "https://fonts.googleapis.com/css?family=Comfortaa:300,400,700", array(), '1.0' );
     wp_register_style( 'bootstrap', get_template_directory_uri() . "/css/bootstrap.min.css", array(), '1.0' );
     wp_register_style( 'flexslider', get_template_directory_uri() . "/css/flexslider.css", array(), '1.0' );
-    wp_register_style( 'jPagesCss', get_template_directory_uri() . "/css/jPages.css", array(), '1.0' );
     wp_register_style( 'font-awesome', get_template_directory_uri() . "/css/font-awesome.min.css", array(), '1.0' );
     wp_register_style( 'main-styles', get_template_directory_uri() . "/css/estilos.css", array(), '1.0' );
 
@@ -25,7 +24,6 @@ function posmon_scripts() {
     wp_enqueue_style( 'font-awesome' );
     wp_enqueue_style( 'google-font' );
     wp_enqueue_style( 'bootstrap' );
-    wp_enqueue_style( 'jPagesCss' );
     wp_enqueue_style( 'flexslider' );
     wp_enqueue_style( 'main-styles' );
 

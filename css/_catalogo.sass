@@ -395,36 +395,51 @@ div.catalogo
 			float: left
 			width: 100%
 			display: flex
-			a.page-link
-				width: 58px
-				justify-content: center
-				font-size: 20px
+			.holder
+				margin: 0
 			a
 				display: flex
 				align-items: center
 				text-decoration: none
 				&:hover
 					background-color: #f2f2f2
+					color: #23527c!important
 			a.control
 				width: 15%
 				height: 100%
+				cursor: pointer
 				&.prev
 					border-right: 1px solid #ddd
 				&.next
 					border-left: 1px solid #ddd
+					width: calc(15% + 1px)
+				&.jp-disabled
+					color: #bbb!important
+					background-color: #f2f2f2
+					cursor: no-drop
 			.pages-container
 				width: 70%
 				height: 100%
-				display: inline-block
-				ul
+				display: flex
+				justify-content: center
+				a
 					margin: 0
 					display: flex
 					justify-content: center
-					a
-						height: 100%
-						border-radius: 0
-						border-top: 0
-						border-bottom: 0
+					height: 100%
+					border: 1px solid #ddd
+					border-radius: 0
+					border-top: 0
+					border-bottom: 0
+					width: 58px
+					font-size: 20px
+					margin-left: -1px
+					color: #337ab7
+					cursor: pointer
+					&.jp-current
+						background-color: #f2f2f2
+						color: #23527c
+						cursor: default
 .catalogo
 	.product-category-grid
 		.paginator	
@@ -433,7 +448,6 @@ div.catalogo
 				span.icon-container
 					width: 45px
 					height: 100%
-					// border-right: 1px solid #ddd
 					display: flex
 					align-items: center
 					justify-content: center
@@ -460,10 +474,10 @@ div.catalogo
 					i
 						position: relative
 						transition: all .3s ease-in-out
-					&.next
+					&.next:not(.jp-disabled)
 						i
 							left: 8%
-					&.prev
+					&.prev:not(.jp-disabled)
 						i
 							right: 8%
 		.grid

@@ -165,7 +165,7 @@
 
                         $categorias = get_terms(array(
                             'taxonomy'      => 'linea-categoria',
-                            'hide_empty'    => false, 
+                            'hide_empty'    => true, 
                             'parent'        => $parentId,
                         ));
                     
@@ -183,7 +183,7 @@
                                     <div class="content">
                                         <div class="product-category-grid">
                                             <div class="grid">
-                                                <div id="itemContainer" class="row items itemContainer ">
+                                                <div id="itemContainer_<?php echo $categoria->term_id ?>" class="row items">
                                                     
                                                     <?php 
                                                         $args = array(
@@ -209,7 +209,7 @@
                                                         if($productos->have_posts()) {
                                                             while($productos->have_posts()): $productos->the_post();
                                                                 ?>
-                                                                    <li class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                                    <li id="<?php the_ID() ?>" class="col-lg-3 col-md-4 col-sm-6 item-container">
                                                                         <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( $lineaID,'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                                             <div class="featured-image">
                                                                                 <img src="<?php echo get_post_meta( get_the_ID() ,'posmon_campos_productos_imagen_destacada_producto', true) ?>" alt="">
@@ -262,130 +262,19 @@
                                                             endwhile; wp_reset_postdata();
                                                         }
                                                     ?>
-
-                                                    <!-- <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
-                                                            <div class="featured-image">
-                                                                <img src="img\productos\salud\1\1.jpg" alt="">
-                                                            </div>
-                                                            <div class="short-description">
-                                                                <div class="reference">
-                                                                    <span>Ref.</span>
-                                                                    <h3 class="name">Mediclásica</h3>
-                                                                </div>
-                                                                <div class="gender">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-female"></i>
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        femenino
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
-                                                            <div class="featured-image">
-                                                                <img src="img\productos\salud\2\1.jpg" alt="">
-                                                            </div>
-                                                            <div class="short-description">
-                                                                <div class="reference">
-                                                                    <span>Ref.</span>
-                                                                    <h3 class="name">Básica</h3>
-                                                                </div>
-                                                                <div class="gender">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-male"></i>
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        masculino
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
-                                                            <div class="featured-image">
-                                                                <img src="img\productos\salud\3\1.jpg" alt="">
-                                                            </div>
-                                                            <div class="short-description">
-                                                                <div class="reference">
-                                                                    <span>Ref.</span>
-                                                                    <h3 class="name">Odontoclásica</h3>
-                                                                </div>
-                                                                <div class="gender">
-                                                                    <div class="icon unisex">
-                                                                        <i class="fa fa-female"></i>
-                                                                        <i class="fa fa-male"></i>
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        unisex
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
-                                                            <div class="featured-image">
-                                                                <img src="img\productos\salud\2\1.jpg" alt="">
-                                                            </div>
-                                                            <div class="short-description">
-                                                                <div class="reference">
-                                                                    <span>Ref.</span>
-                                                                    <h3 class="name">Básica</h3>
-                                                                </div>
-                                                                <div class="gender">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-female"></i>
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        femenino
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
-                                                            <div class="featured-image">
-                                                                <img src="img\productos\salud\2\1.jpg" alt="">
-                                                            </div>
-                                                            <div class="short-description">
-                                                                <div class="reference">
-                                                                    <span>Ref.</span>
-                                                                    <h3 class="name">Básica</h3>
-                                                                </div>
-                                                                <div class="gender">
-                                                                    <div class="icon">
-                                                                        <i class="fa fa-female"></i>
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        femenino
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
                                                 </div>
                                             </div>
-                                            <div class="holder"></div>
+                                            
                                             <div class="row paginator">
                                                 <nav>
-                                                    <a class="control prev" href="#" tabindex="-1">
+                                                    <a class="control prev arrowPrev">
                                                         <span class="icon-container"><i class="fa fa-angle-left"></i></span>
                                                         <span class="text-container">Anterior</span>
                                                     </a>
-                                                    <div class="pages-container">
-                                                        <ul class="pagination">
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <a class="control next" href="#">
+
+                                                    <div class="pages-container holder"></div>
+
+                                                    <a class="control next arrowNext">
                                                         <span class="text-container">Siguiente</span>
                                                         <span class="icon-container"><i class="fa fa-angle-right"></i></span>
                                                     </a>
