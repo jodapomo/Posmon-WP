@@ -159,6 +159,30 @@ $(document).ready(function(){
 			});
 		},
 
+		setUpClickableProduct: function () {
+			return this.each(function () {
+				var grid = $(this).parents(".product-category-grid"),
+					product = $(grid).next(),
+					backButton = $(product).find(".control.back");
+
+					console.log(backButton);
+					
+					
+					$(this).on("click", function() {
+						$(grid).hide();
+						$(product).show();
+					});
+
+					$(backButton).on("click", function (e) {
+						e.preventDefault();
+
+						$(product).hide();
+						$(grid).show();
+					});
+
+			});
+		},
+
 	});
 
 
@@ -196,6 +220,8 @@ function resizeFrontPageLine() {
 $(document).ready(function(){
 
 	$('.product-category-grid').setCatalogPagination();
+
+	$('.product-category-grid .item').setUpClickableProduct();
 
 	$('.slider .big-title').setSizeBigTitle();
 	

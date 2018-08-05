@@ -93,6 +93,7 @@ div.catalogo
 	.product-category-gallery .row,.product-category-grid .row
 		margin: 0
 	.product-category-gallery
+		display: none
 		.product-name
 			border-bottom: 1px solid #ddd
 			width: 100%
@@ -285,15 +286,16 @@ div.catalogo
 				padding: 0
 				height: 100%
 			.back-button-container
+				overflow: hidden
 				a.control
 					width: 100%
 					height: 100%
 					text-decoration: none
 					display: flex
+					cursor: pointer
 					&:hover
 						background-color: #f2f2f2
 					span.icon-container
-						background: #337ab7
 						width: 135px
 						height: 100%
 						display: flex
@@ -348,6 +350,7 @@ div.catalogo
 					display: flex
 					align-items: center
 					text-decoration: none
+					cursor: pointer
 					&:hover
 						background-color: #f2f2f2
 					span.icon-container
