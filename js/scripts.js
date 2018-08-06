@@ -159,26 +159,33 @@ $(document).ready(function(){
 			});
 		},
 
-		setUpClickableProduct: function () {
+		clickableProduct: function () {
+
 			return this.each(function () {
 				var grid = $(this).parents(".product-category-grid"),
-					product = $(grid).next(),
-					backButton = $(product).find(".control.back");
+					product_template = $(grid).next(),
+					backButton = $(product_template).find(".control.back");
 
-					console.log(backButton);
+				// console.log(product_template);
+				
+				$(this).on("click", function() {
+					product_id = $(this).attr('id-producto');
 					
-					
-					$(this).on("click", function() {
-						$(grid).hide();
-						$(product).show();
-					});
+					repaintProduct( product_template, product_id );
+				
+					$(grid).hide();
+					$(product_template).show();
 
-					$(backButton).on("click", function (e) {
-						e.preventDefault();
+				});
 
-						$(product).hide();
-						$(grid).show();
-					});
+				$(backButton).on("click", function (e) {
+					e.preventDefault();
+
+					$(product_template).hide();
+					$(grid).show();
+
+					cleanProduct(product_template);
+				});
 
 			});
 		},
@@ -188,6 +195,124 @@ $(document).ready(function(){
 
 
 });
+
+function repaintProduct( template, productId ) {
+	var url_rest = rest_api_route.url;
+
+	var product_url = url_rest + productId;
+
+	$.ajax({
+		dataType: 'json',
+		url: product_url
+	}).done(function(product) {
+
+		console.log(product);
+		
+		repaint(product);
+		
+	});
+
+	function repaint(product) {
+		var title = $(template).find("h3.name"),
+			gender = $(template).find("div.gender"),
+			descripcion = $(template).find("div.descripcion"),
+			options = $(template).find("ul.options"),
+			gallery = $(template).find("div.thumbnail-gallery-container");	
+			
+
+		$(title).append(product.title.rendered);
+
+		$(gender).append( genderTemplate( product.genero ) );
+		
+		$(descripcion).append( product.desc );
+
+		$(options).append( opcionesTemplate( product.opciones ) );
+
+		$(gallery).append( galeriaTemplate( product.galeria ) );
+
+		$(template).find("div.product-content").productGallery();
+	}
+	
+}
+
+function cleanProduct(template) {
+	var title = $(template).find("h3.name"),
+		gender = $(template).find("div.gender"),
+		descripcion = $(template).find("div.descripcion"),
+		options = $(template).find("ul.options"),
+		gallery = $(template).find("div.thumbnail-gallery-container");
+
+	$(title).empty();
+
+	$(gender).empty();
+	
+	$(descripcion).empty();
+
+	$(options).empty();
+
+	$(gallery).empty();
+
+	$(template).find("div.product-content .big-image-container img").attr('src', '');
+	
+}
+
+function galeriaTemplate(galeria) {
+	template = '';
+
+	fullSizeImage = galeria['galeria'];
+	thumbnails = galeria['thumbnails'];
+
+	for ( index in thumbnails ) {
+		template += '<a class="product-thumbnail" href="' + fullSizeImage[index] + '">' + 
+						'<img src="' + thumbnails[index][0] + '">';
+					'</a>';
+	}
+
+	return template;
+}
+
+function opcionesTemplate(opciones) {
+	template = '';
+
+	for ( index in opciones ) {
+		template += '<li>' + opciones[index] + '</li>'
+	}
+
+	return template;
+}
+
+
+function genderTemplate(gender) {
+	template = '';
+	if ( gender == 'unisex' ) {
+
+		template = '' + 
+			'<div class="icon unisex">' +
+				'<i class="fa fa-female"></i>' +
+				'<i class="fa fa-male"></i>' +
+			'</div>' +
+			'<div class="text">unisex</div>';
+
+	} else if ( gender == 'femenino' ) {
+
+		template = '' + 
+			'<div class="icon">' +
+				'<i class="fa fa-female"></i>' +
+			'</div>' +
+			'<div class="text">femenino</div>';
+
+	} else if ( gender == 'masculino' ) { 
+
+		template = '' + 
+			'<div class="icon">' +
+				'<i class="fa fa-male"></i>' +
+			'</div>' +
+			'<div class="text">masculino</div>';
+	}
+
+	return template;
+}
+
 
 function resizeFrontPageLine() {
 	var rh = $(window).height(),
@@ -219,9 +344,12 @@ function resizeFrontPageLine() {
 
 $(document).ready(function(){
 
+
+	
+
 	$('.product-category-grid').setCatalogPagination();
 
-	$('.product-category-grid .item').setUpClickableProduct();
+	$('.product-category-grid .item').clickableProduct();
 
 	$('.slider .big-title').setSizeBigTitle();
 	
@@ -254,7 +382,7 @@ $(document).ready(function(){
 					scrollTop : locationTop
 				} , 500);
 
-			 }, 650);
+			 }, 700);
 
 
 		}

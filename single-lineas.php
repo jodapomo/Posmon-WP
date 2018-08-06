@@ -209,8 +209,8 @@
                                                         if($productos->have_posts()) {
                                                             while($productos->have_posts()): $productos->the_post();
                                                                 ?>
-                                                                    <li id="<?php the_ID() ?>" class="col-lg-3 col-md-4 col-sm-6 item-container">
-                                                                        <div class="item" onmouseover="this.style.border='1px solid <?php echo get_post_meta( $lineaID,'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
+                                                                    <li class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                                        <div class="item" id-producto="<?php the_ID() ?>" onmouseover="this.style.border='1px solid <?php echo get_post_meta( $lineaID,'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                                             <div class="featured-image">
                                                                                 <img src="<?php echo get_post_meta( get_the_ID() ,'posmon_campos_productos_imagen_destacada_producto', true) ?>" alt="">
                                                                             </div>
@@ -308,64 +308,26 @@
                                                     <div class="row product-name">
                                                         <span class="row">Ref.</span>
                                                         <div class="row">
-                                                            <h3>Básica</h3>
+                                                            <h3 class="name"></h3>
                                                             <div class="gender">
-                                                                <div class="icon unisex">
-                                                                    <i class="fa fa-female"></i>
-                                                                    <i class="fa fa-male"></i>
-                                                                </div>
-                                                                <div class="text">
-                                                                    unisex
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <p>Diseño corte clásico, con cierre chaquetero frontal, en color fondo entero.
-                                                            <br>Tallaje masculino y femenino.<br>
-                                                            Elaborado en tela antifluidos.</p>
+                                                        <div class="descripcion"></div>
+                                                        
                                                         <h6>Opciones:</h6>
-                                                        <ul>
-                                                            <li>Con cuello camisero, militar o sin cuello.</li>
-                                                            <li>Cierre frontal visible o con solapa.</li>
-                                                            <li>Manga larga o manga corta.</li>
-                                                            <li>Puño resortado o recto.</li>
-                                                            <li>Con o sin bordado.</li>
-                                                        </ul>
+                                                        <ul class="options"></ul>
+
                                                         <a class="telas-button" href="telas.html" target="_blank">
-                                                            <img src="img\info\sub-info\telas.png">
+                                                            <img src="<?php echo get_template_directory_uri() ?>\img\telas.png">
                                                             <span>Catálogo de telas</span>
                                                         </a>
                                                     </div>
-                                                    <div class="thumbnail-gallery-container v2">
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\1.jpg">
-                                                            <img src="img\productos\salud\2\1.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\2.jpg">
-                                                            <img src="img\productos\salud\2\2.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\3.jpg">
-                                                            <img src="img\productos\salud\2\3.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\4.jpg">
-                                                            <img src="img\productos\salud\2\4.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\5.jpg">
-                                                            <img src="img\productos\salud\2\5.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\6.jpg">
-                                                            <img src="img\productos\salud\2\6.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\7.jpg">
-                                                            <img src="img\productos\salud\2\7.jpg" alt="Thumbnail">
-                                                        </a>
-                                                        <a class="product-thumbnail" href="img\productos\salud\2\8.jpg">
-                                                            <img src="img\productos\salud\2\8.jpg" alt="Thumbnail">
-                                                        </a>
-                                                    </div>
+                                                    <div class="thumbnail-gallery-container"></div>
                                                 </div>
                                                 <div class="col-md-7  product-gallery">
-                                                    <div class="big-image-container v2">
+                                                    <div class="big-image-container">
                                                         <img src="">
                                                         <div class="controls-container">
                                                             <div class="control prev">

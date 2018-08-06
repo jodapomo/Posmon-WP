@@ -4,6 +4,8 @@ remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 add_theme_support( 'title-tag' );
 
+add_image_size('product_thumbnail', 78, 78, true );
+
 function posmon_scripts() {
     // Register Styles
     wp_register_style( 'w3-columns', "https://www.w3schools.com/w3css/4/w3.css", array(), '1.0' );
@@ -39,6 +41,123 @@ function posmon_scripts() {
     wp_enqueue_script('flexsliderJs');
     wp_enqueue_script('jPages');
     wp_enqueue_script('mainScripts');
+
+    wp_localize_script( 
+        'mainScripts',
+        'rest_api_route',
+        array(
+            'url' => rest_url( '/wp/v2/productos/' ),
+        )
+    );
 }
 
 add_action( 'wp_enqueue_scripts', 'posmon_scripts' );
+
+add_action( 'rest_api_init', 'posmon_rest_api' );
+
+
+function posmon_rest_api() {
+    register_rest_field(
+        'productos',
+        'genero',
+        array(
+            'get_callback'      => 'posmon_producto_genero',
+            'schema'            => null,
+            'update_callback'   => null,
+        )
+    );
+    register_rest_field(
+        'productos',
+        'desc',
+        array(
+            'get_callback'      => 'posmon_producto_desc',
+            'schema'            => null,
+            'update_callback'   => null,
+        )
+    );
+    register_rest_field(
+        'productos',
+        'opciones',
+        array(
+            'get_callback'      => 'posmon_producto_opciones',
+            'schema'            => null,
+            'update_callback'   => null,
+        )
+    );
+    register_rest_field(
+        'productos',
+        'galeria',
+        array(
+            'get_callback'      => 'posmon_producto_galeria',
+            'schema'            => null,
+            'update_callback'   => null,
+        )
+    );
+
+}
+
+
+function posmon_producto_genero () {
+    global $post;
+    $post_id = $post->ID;
+
+    return get_post_meta( $post_id, 'posmon_campos_productos_genero_producto', true );
+}
+
+function posmon_producto_desc () {
+    global $post;
+    $post_id = $post->ID;
+
+    $desc = get_post_meta( $post_id, 'posmon_campos_productos_desc_producto', true );
+
+    if ( isset( $desc )  ) {
+        return wpautop( $desc );
+
+    } else {
+
+        return '';
+    }
+    
+}
+
+function posmon_producto_opciones () {
+    global $post;
+    $post_id = $post->ID;
+
+    $opciones = get_post_meta( $post_id, 'posmon_campos_productos_opciones_producto', true );
+
+    if ( isset( $opciones )  ) {
+        return $opciones;
+
+    } else {
+
+        return '';
+    }
+}
+
+function posmon_producto_galeria () {
+    global $post;
+    $post_id = $post->ID;
+
+    $metabox = get_post_meta( $post_id, 'posmon_campos_productos_galeria_producto', true );
+
+    if ( $metabox != ""  ) {
+        $galery = array();
+        $thumbnails = array();
+    
+        foreach ( (array) $metabox as $key => $value) {
+            $galery[] = $value;
+            $thumbnails[] = wp_get_attachment_image_src( $key, 'product_thumbnail');
+        }
+    
+        $result = array(
+            "galeria"       => $galery,
+            "thumbnails"    => $thumbnails,
+        );
+    
+        return $result;
+    } else {
+        return '';
+    }
+
+}

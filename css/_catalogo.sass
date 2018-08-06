@@ -124,7 +124,7 @@ div.catalogo
 					font-size: 25px
 					&.unisex
 						i:first-child
-							margin-right: -6px
+							margin-right: 1px
 				.text
 					text-align: center
 		.product-content
@@ -138,9 +138,10 @@ div.catalogo
 				border: 1px solid #ddd
 				border-right: 0
 				overflow: hidden
-				p
-					margin-bottom: 15px
-					text-align: justify
+				.descripcion
+					p
+						margin-bottom: 15px
+						text-align: justify
 				h6
 					color: #337ab7
 					font-size: 16px
@@ -159,6 +160,7 @@ div.catalogo
 					width: 205px
 					padding: 5px
 					margin: 0 auto
+					margin-top: 20px
 					-webkit-transition: all .3s ease
 					-o-transition: all .3s ease
 					transition: all .3s ease
@@ -166,9 +168,7 @@ div.catalogo
 						height: 45px
 					&:hover
 						background: #f2f2f2
-						span
-							text-decoration: underline
-			.thumbnail-gallery-container.v2
+			.thumbnail-gallery-container
 				width: 412px
 				margin: 0 auto
 				display: flex
@@ -206,7 +206,7 @@ div.catalogo
 				.big-image-container
 					background-color: #fff
 					position: relative
-					height: 600px
+					height: 700px
 					border: 1px solid #ddd
 					overflow: hidden
 					img
@@ -253,31 +253,6 @@ div.catalogo
 							&.prev
 								i
 									left: 8%
-				.big-image-container.v2
-					height: 700px
-				.thumbnail-gallery-container
-					height: 100px
-					border: 1px solid #ddd
-					border-top: 0
-					display: flex
-					justify-content: center
-					flex-wrap: wrap
-					.product-thumbnail
-						display: inline-block
-						border-left: 1px solid #ddd
-						height: 100px
-						width: 100px
-						overflow: hidden
-						text-align: center
-						img
-							height: 100%
-					.product-thumbnail:not(:first-child)
-						filter: grayscale(100%)
-					.product-thumbnail:last-child
-						border-right: 1px solid #ddd
-					.filling-empty-space
-						width: 100px
-						height: 0
 		.controls
 			height: 60px
 			border: 1px solid #ddd
