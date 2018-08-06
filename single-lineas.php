@@ -280,6 +280,7 @@
                                                     </a>
                                                 </nav>
                                             </div>
+                                            <div class="loading" style="background-image: url(<?php echo get_template_directory_uri() . '/img/ajax-loader.gif' ?>)"></div>
                                         </div>
 
                                         <div class="product-category-gallery">
@@ -341,6 +342,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
                                     </div>
                                 </div>
                             <?php 

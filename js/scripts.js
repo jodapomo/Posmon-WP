@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 				// First thumbnail setup
 				var first_thumbnail = thumbnail[0],
-					first_thumbnail_src = $(first_thumbnail).attr("href");
+					first_thumbnail_src = $(first_thumbnail).attr("full-image");
 				$(first_thumbnail).addClass("active");
 				mainImage.attr("src", first_thumbnail_src);
 				
@@ -55,7 +55,7 @@ $(document).ready(function(){
 					$(this).siblings().removeClass("active");
 					$(this).addClass("active");
 
-					var galleryImage = $(this).attr("href");
+					var galleryImage = $(this).attr("full-image");
 					mainImage.attr("src", galleryImage);
 				});
 
@@ -75,7 +75,7 @@ $(document).ready(function(){
 						nextImage = $(currentImage).next();
 					}
 										
-					nextImageSrc = $(nextImage).attr("href");
+					nextImageSrc = $(nextImage).attr("full-image");
 
 					$(currentImage).removeClass("active");
 					$(nextImage).addClass("active");
@@ -94,7 +94,7 @@ $(document).ready(function(){
 						prevImage = $(currentImage).prev();
 					}
 										
-					prevImageSrc = $(prevImage).attr("href");
+					prevImageSrc = $(prevImage).attr("full-image");
 
 					$(currentImage).removeClass("active");
 					$(prevImage).addClass("active");
@@ -164,7 +164,8 @@ $(document).ready(function(){
 			return this.each(function () {
 				var grid = $(this).parents(".product-category-grid"),
 					product_template = $(grid).next(),
-					backButton = $(product_template).find(".control.back");
+					backButton = $(product_template).find(".control.back"),
+					loading = $(grid).find(".loading");
 
 				// console.log(product_template);
 				
@@ -172,9 +173,18 @@ $(document).ready(function(){
 					product_id = $(this).attr('id-producto');
 					
 					repaintProduct( product_template, product_id );
-				
-					$(grid).hide();
-					$(product_template).show();
+
+
+					$(document).on({
+						ajaxStart: function() { 
+							$(loading).show();
+						},
+						ajaxComplete: function() { 
+							$(loading).hide();
+							$(grid).hide();
+							$(product_template).show();
+						}    
+					});
 
 				});
 
@@ -263,7 +273,7 @@ function galeriaTemplate(galeria) {
 	thumbnails = galeria['thumbnails'];
 
 	for ( index in thumbnails ) {
-		template += '<a class="product-thumbnail" href="' + fullSizeImage[index] + '">' + 
+		template += '<a class="product-thumbnail" full-image="' + fullSizeImage[index] + '">' + 
 						'<img src="' + thumbnails[index][0] + '">';
 					'</a>';
 	}

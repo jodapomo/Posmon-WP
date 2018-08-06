@@ -1330,4 +1330,15 @@ div.catalogo {
         border: 1px solid #003a99;
         box-shadow: 0px 0px 2px 0px #4f4f4f; }
 
+.catalogo .product-category-grid {
+  height: 760px;
+  position: relative; }
+.catalogo .loading {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(255, 255, 255, 0.8) 50% 50% no-repeat;
+  display: none; }
+
 /*# sourceMappingURL=estilos.css.map */
