@@ -1158,6 +1158,10 @@ div.catalogo {
           align-items: center;
           justify-content: center;
           font-size: 60px; }
+        .catalogo .product-category-gallery .controls .references-nav-controls a.control.disabled {
+          color: #bbb !important;
+          background-color: #f2f2f2;
+          cursor: no-drop; }
         .catalogo .product-category-gallery .controls .references-nav-controls a.control.prev i {
           transition: all 0.3s ease-in-out;
           position: relative;
@@ -1177,9 +1181,9 @@ div.catalogo {
         .catalogo .product-category-gallery .controls .references-nav-controls a.control:hover i {
           position: relative;
           transition: all 0.3s ease-in-out; }
-        .catalogo .product-category-gallery .controls .references-nav-controls a.control:hover.next i {
+        .catalogo .product-category-gallery .controls .references-nav-controls a.control:hover.next:not(.disabled) i {
           left: 8%; }
-        .catalogo .product-category-gallery .controls .references-nav-controls a.control:hover.prev i {
+        .catalogo .product-category-gallery .controls .references-nav-controls a.control:hover.prev:not(.disabled) i {
           right: 8%; }
 .catalogo .paginator {
   height: 60px;

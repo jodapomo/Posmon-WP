@@ -166,13 +166,12 @@ $(document).ready(function(){
 					product_template = $(grid).next(),
 					backButton = $(product_template).find(".control.back"),
 					loading = $(grid).find(".loading");
-
-				// console.log(product_template);
 				
 				$(this).on("click", function() {
-					product_id = $(this).attr('id-producto');
 					
-					repaintProduct( product_template, product_id );
+					var product = $(this);
+
+					repaintProduct( product_template, product );
 
 
 					$(document).on({
@@ -194,7 +193,7 @@ $(document).ready(function(){
 					$(product_template).hide();
 					$(grid).show();
 
-					cleanProduct(product_template);
+					
 				});
 
 			});
@@ -206,20 +205,82 @@ $(document).ready(function(){
 
 });
 
-function repaintProduct( template, productId ) {
+function setNextBackButton(template, item) {
+	var prev = $(item).prev().children('.item'),
+		next = $(item).next().children('.item');
+
+	var prevButton = $(template).find(".references-nav-controls .control.prev"),
+		nextButton = $(template).find(".references-nav-controls .control.next");
+
+
+	var currentId = $(item).children('.item').attr('id-producto'),
+		prevId    = $(prev).attr('id-producto'),
+		nextId    = $(next).attr('id-producto');
+		
+	$(prevButton).off();
+	$(nextButton).off();
+
+
+	if ( !$(item).is(':last-child') ) {
+
+		$(nextButton).removeClass("disabled");
+
+		$(nextButton).on("click", function () {
+
+			repaintProduct( template, next );
+	
+			$(nextButton).off();
+		});	
+
+	}
+
+	if ( !$(item).is(':first-child') ) {
+
+		$(prevButton).removeClass("disabled");
+
+		$(prevButton).on("click", function () {
+
+			repaintProduct( template, prev );
+	
+			$(prevButton).off();
+		});
+
+	}
+
+	if ( $(item).is(':first-child') ||  $(item).is(':last-child')) {
+		
+		if ( $(item).is(':first-child') ) {
+			$(prevButton).addClass("disabled");
+		} 
+
+		if ( $(item).is(':last-child') ) {
+			$(nextButton).addClass("disabled");
+		}
+		return;
+	}
+
+	
+
+}
+
+function repaintProduct( template, product ) {
 	var url_rest = rest_api_route.url;
 
-	var product_url = url_rest + productId;
+	var product_id = $(product).attr('id-producto');
 
+	var product_url = url_rest + product_id;
+
+	cleanProduct(template);
+
+				
 	$.ajax({
 		dataType: 'json',
 		url: product_url
-	}).done(function(product) {
+	}).done(function(result) {
 
-		console.log(product);
-		
-		repaint(product);
-		
+		repaint(result);
+
+		setNextBackButton( template, $(product).parent() );
 	});
 
 	function repaint(product) {
@@ -242,86 +303,91 @@ function repaintProduct( template, productId ) {
 
 		$(template).find("div.product-content").productGallery();
 	}
+
+	function cleanProduct(template) {
+		var title = $(template).find("h3.name"),
+			gender = $(template).find("div.gender"),
+			descripcion = $(template).find("div.descripcion"),
+			options = $(template).find("ul.options"),
+			gallery = $(template).find("div.thumbnail-gallery-container");
 	
-}
-
-function cleanProduct(template) {
-	var title = $(template).find("h3.name"),
-		gender = $(template).find("div.gender"),
-		descripcion = $(template).find("div.descripcion"),
-		options = $(template).find("ul.options"),
-		gallery = $(template).find("div.thumbnail-gallery-container");
-
-	$(title).empty();
-
-	$(gender).empty();
+		$(title).empty();
 	
-	$(descripcion).empty();
-
-	$(options).empty();
-
-	$(gallery).empty();
-
-	$(template).find("div.product-content .big-image-container img").attr('src', '');
+		$(gender).empty();
+		
+		$(descripcion).empty();
 	
-}
-
-function galeriaTemplate(galeria) {
-	template = '';
-
-	fullSizeImage = galeria['galeria'];
-	thumbnails = galeria['thumbnails'];
-
-	for ( index in thumbnails ) {
-		template += '<a class="product-thumbnail" full-image="' + fullSizeImage[index] + '">' + 
-						'<img src="' + thumbnails[index][0] + '">';
-					'</a>';
+		$(options).empty();
+	
+		$(gallery).empty();
+	
+		$(template).find("div.product-content .big-image-container img").attr('src', '');		
+		
 	}
 
-	return template;
-}
-
-function opcionesTemplate(opciones) {
-	template = '';
-
-	for ( index in opciones ) {
-		template += '<li>' + opciones[index] + '</li>'
+	function galeriaTemplate(galeria) {
+		var template = '';
+	
+		var fullSizeImage = galeria['galeria'];
+		var thumbnails = galeria['thumbnails'];
+	
+		for ( index in thumbnails ) {
+			template += '<a class="product-thumbnail" full-image="' + fullSizeImage[index] + '">' + 
+							'<img src="' + thumbnails[index][0] + '">';
+						'</a>';
+		}
+	
+		return template;
 	}
 
-	return template;
-}
-
-
-function genderTemplate(gender) {
-	template = '';
-	if ( gender == 'unisex' ) {
-
-		template = '' + 
-			'<div class="icon unisex">' +
-				'<i class="fa fa-female"></i>' +
-				'<i class="fa fa-male"></i>' +
-			'</div>' +
-			'<div class="text">unisex</div>';
-
-	} else if ( gender == 'femenino' ) {
-
-		template = '' + 
-			'<div class="icon">' +
-				'<i class="fa fa-female"></i>' +
-			'</div>' +
-			'<div class="text">femenino</div>';
-
-	} else if ( gender == 'masculino' ) { 
-
-		template = '' + 
-			'<div class="icon">' +
-				'<i class="fa fa-male"></i>' +
-			'</div>' +
-			'<div class="text">masculino</div>';
+	function opcionesTemplate(opciones) {
+		var template = '';
+	
+		for ( index in opciones ) {
+			template += '<li>' + opciones[index] + '</li>'
+		}
+	
+		return template;
 	}
 
-	return template;
+
+	function genderTemplate(gender) {
+		var template = '';
+		if ( gender == 'unisex' ) {
+	
+			template = '' + 
+				'<div class="icon unisex">' +
+					'<i class="fa fa-female"></i>' +
+					'<i class="fa fa-male"></i>' +
+				'</div>' +
+				'<div class="text">unisex</div>';
+	
+		} else if ( gender == 'femenino' ) {
+	
+			template = '' + 
+				'<div class="icon">' +
+					'<i class="fa fa-female"></i>' +
+				'</div>' +
+				'<div class="text">femenino</div>';
+	
+		} else if ( gender == 'masculino' ) { 
+	
+			template = '' + 
+				'<div class="icon">' +
+					'<i class="fa fa-male"></i>' +
+				'</div>' +
+				'<div class="text">masculino</div>';
+		}
+	
+		return template;
+	}
+	
+		
 }
+
+
+
+
 
 
 function resizeFrontPageLine() {
@@ -353,9 +419,6 @@ function resizeFrontPageLine() {
 
 
 $(document).ready(function(){
-
-
-	
 
 	$('.product-category-grid').setCatalogPagination();
 

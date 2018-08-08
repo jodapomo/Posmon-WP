@@ -335,6 +335,10 @@ div.catalogo
 						align-items: center
 						justify-content: center
 						font-size: 60px
+					&.disabled
+						color: #bbb!important
+						background-color: #f2f2f2
+						cursor: no-drop
 					&.prev
 						i
 							transition: all .3s ease-in-out
@@ -357,10 +361,10 @@ div.catalogo
 						i
 							position: relative
 							transition: all .3s ease-in-out
-						&.next
+						&.next:not(.disabled)
 							i
 								left: 8%
-						&.prev
+						&.prev:not(.disabled)
 							i
 								right: 8%
 	.paginator
