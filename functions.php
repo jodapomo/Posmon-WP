@@ -55,7 +55,6 @@ add_action( 'wp_enqueue_scripts', 'posmon_scripts' );
 
 add_action( 'rest_api_init', 'posmon_rest_api' );
 
-
 function posmon_rest_api() {
     register_rest_field(
         'productos',
@@ -161,3 +160,31 @@ function posmon_producto_galeria () {
     }
 
 }
+
+
+function posmon_menus(){
+
+    register_nav_menus( array(
+        'social_menu' => __('Menú Social ', 'posmon'),
+    ));
+
+}
+
+add_action( 'init', 'posmon_menus' );
+
+
+// Removes from admin menu
+add_action( 'admin_menu', 'my_remove_admin_menus' );
+function my_remove_admin_menus() {
+    remove_menu_page( 'edit-comments.php' );
+    remove_menu_page( 'edit.php' );
+}
+
+// Removes from admin bar
+function mytheme_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+    $wp_admin_bar->remove_menu('new-post');
+}
+
+add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );

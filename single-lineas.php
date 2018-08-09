@@ -176,8 +176,8 @@
                                         <div class="sesg" style="background: <?php echo get_post_meta( get_the_ID(),'posmon_campos_lineas_color_catalogo', true) ?>">
                                         </div>
                                         <div class="textos">
-                                            <h3><?php echo $categoria->name ?></h3>
-                                            <p><?php echo $categoria->description ?></p>
+                                            <h3><?php echo mb_strtolower($categoria->name) ?></h3>
+                                            <p><?php echo mb_strtolower($categoria->description) ?></p>
                                         </div>
                                     </div>
                                     <div class="content">
@@ -320,7 +320,7 @@
                                                         <h6>Opciones:</h6>
                                                         <ul class="options"></ul>
 
-                                                        <a class="telas-button" href="telas.html" target="_blank">
+                                                        <a class="telas-button" href="<?php echo get_permalink( 165 ) ?>\#catalogo-telas" target="_blank">
                                                             <img src="<?php echo get_template_directory_uri() ?>\img\telas.png">
                                                             <span>Catálogo de telas</span>
                                                         </a>
@@ -341,6 +341,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="loading" style="background-image: url(<?php echo get_template_directory_uri() . '/img/ajax-loader.gif' ?>)"></div>
                                         </div>
 
                                         

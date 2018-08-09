@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 @import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
 * {
@@ -38,84 +39,80 @@ body {
 
 .main {
   overflow: hidden; }
-  .main .empresa {
-    background: #000; }
-    .main .empresa .contenedor-titulo {
-      background: url("../img/bgE3.png");
-      background-size: cover;
-      background-position: center 0;
-      background-repeat: no-repeat;
-      background-attachment: fixed; }
-      .main .empresa .contenedor-titulo .titulo {
-        color: #f2f2f2;
-        font-size: 90px;
-        font-weight: 700;
-        margin-top: 220px;
-        margin-bottom: 80px;
-        text-shadow: 0 0 15px rgba(0, 0, 0, 0.9); }
-      .main .empresa .contenedor-titulo .logo {
-        text-align: right;
-        padding-right: 80px;
-        padding-bottom: 50px; }
-    .main .empresa .quienes-somos .titulo {
+  .main .empresa .contenedor-titulo {
+    background-size: cover;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed; }
+    .main .empresa .contenedor-titulo .titulo {
+      color: #f2f2f2;
+      font-size: 90px;
+      font-weight: 700;
+      margin-top: 220px;
+      margin-bottom: 80px;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9); }
+    .main .empresa .contenedor-titulo .logo {
+      text-align: right;
+      padding-right: 80px;
+      padding-bottom: 50px; }
+  .main .empresa .quienes-somos .titulo {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0070B8; }
+  .main .empresa .quienes-somos .parrafo {
+    text-align: center;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: justify; }
+  .main .empresa .valores {
+    text-align: center;
+    margin-bottom: 40px; }
+    .main .empresa .valores .titulo {
+      color: #0070B8;
       text-align: center;
       font-size: 30px;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 10px; }
+    .main .empresa .valores ul {
+      list-style: none; }
+      .main .empresa .valores ul li {
+        text-align: center; }
+        .main .empresa .valores ul li p {
+          background: #000;
+          color: #fff;
+          display: inline-block;
+          font-size: 20px;
+          text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+          line-height: 18px;
+          margin: 0;
+          width: 160px;
+          padding: 71px 0; }
+        .main .empresa .valores ul li:nth-child(1) p {
+          background: #67BD50; }
+        .main .empresa .valores ul li:nth-child(2) p {
+          background: #FFCC29; }
+        .main .empresa .valores ul li:nth-child(3) p {
+          background: #F58634; }
+        .main .empresa .valores ul li:nth-child(4) p {
+          background: #ED3237; }
+  .main .empresa .mision-vision .mision,
+  .main .empresa .mision-vision .vision {
+    padding: 0;
+    margin: 0 40px;
+    margin-bottom: 40px;
+    padding: 20px; }
+    .main .empresa .mision-vision .mision .titulo,
+    .main .empresa .mision-vision .vision .titulo {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 30px;
       color: #0070B8; }
-    .main .empresa .quienes-somos .parrafo {
-      text-align: center;
-      font-size: 18px;
-      line-height: 35px;
+    .main .empresa .mision-vision .mision p,
+    .main .empresa .mision-vision .vision p {
       text-align: justify; }
-    .main .empresa .valores {
-      text-align: center;
-      margin-bottom: 40px; }
-      .main .empresa .valores .titulo {
-        color: #0070B8;
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 10px; }
-      .main .empresa .valores ul {
-        list-style: none; }
-        .main .empresa .valores ul li {
-          text-align: center; }
-          .main .empresa .valores ul li p {
-            background: #000;
-            color: #fff;
-            display: inline-block;
-            font-size: 20px;
-            text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
-            line-height: 18px;
-            margin: 0;
-            width: 160px;
-            padding: 71px 0; }
-            .main .empresa .valores ul li p.val1 {
-              background: #67BD50; }
-            .main .empresa .valores ul li p.val2 {
-              background: #FFCC29; }
-            .main .empresa .valores ul li p.val3 {
-              background: #F58634; }
-            .main .empresa .valores ul li p.val4 {
-              background: #ED3237; }
-    .main .empresa .mision-vision .mision,
-    .main .empresa .mision-vision .vision {
-      padding: 0;
-      margin: 0 40px;
-      margin-bottom: 40px;
-      padding: 20px; }
-      .main .empresa .mision-vision .mision .titulo,
-      .main .empresa .mision-vision .vision .titulo {
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 30px;
-        color: #0070B8; }
-      .main .empresa .mision-vision .mision p,
-      .main .empresa .mision-vision .vision p {
-        text-align: justify; }
   .main .contacto .contenedor-titulo {
-    background: url("../img/bgE4.png");
     background-size: cover;
     background-position: center 0;
     background-repeat: no-repeat;
@@ -263,7 +260,13 @@ header {
             border-bottom: 6px solid #ED3237; }
   header .redes .sociales {
     text-align: right; }
-    header .redes .sociales a {
+    header .redes .sociales ul {
+      list-style: none; }
+      header .redes .sociales ul li {
+        display: inline-block; }
+    header .redes .sociales span.text {
+      display: none; }
+    header .redes .sociales a::before {
       display: inline-block;
       width: 30px;
       height: 30px;
@@ -272,13 +275,37 @@ header {
       color: #fff;
       border-radius: 7px;
       background: #754598;
-      font-size: 20px; }
-      header .redes .sociales a.instagram {
-        background: #c13584; }
-      header .redes .sociales a.twitter {
-        background: #55acee; }
-      header .redes .sociales a.facebook {
-        background: #3b5998; }
+      font-size: 20px;
+      font-family: "FontAwesome";
+      content: "";
+      -webkit-font-smooth: antialiased; }
+    header .redes .sociales a[href*='instagram']::before {
+      background: #c13584;
+      content: ""; }
+    header .redes .sociales a[href*='twitter']::before {
+      background: #55acee;
+      content: ""; }
+    header .redes .sociales a[href*='facebook']::before {
+      background: #3b5998;
+      content: ""; }
+    header .redes .sociales a[href*='pinterest']::before {
+      background: #bd081c;
+      content: ""; }
+    header .redes .sociales a[href*='youtube']::before {
+      background: #ff0000;
+      content: ""; }
+    header .redes .sociales a[href*='skype']::before {
+      background: #00aff0;
+      content: ""; }
+    header .redes .sociales a[href*='tumblr']::before {
+      background: #35465c;
+      content: ""; }
+    header .redes .sociales a[href*='whatsapp']::before {
+      background: #075e54;
+      content: ""; }
+    header .redes .sociales a[href*='vimeo']::before {
+      background: #1ab7ea;
+      content: ""; }
   header .redes .telefono {
     text-align: right;
     font-weight: 300;
@@ -355,6 +382,15 @@ header {
       display: none; }
       header .menu ul li a {
         padding-top: 30px; } }
+body.page-template-productos .menu li a.productos, body.single-lineas .menu li a.productos {
+  border-bottom: 6px solid #FFCC29; }
+
+body.home .menu li a.inicio {
+  border-bottom: 6px solid #0070B8; }
+
+body.page-template-telas .menu li a.telas {
+  border-bottom: 6px solid #F58634; }
+
 footer .contenedor-footer {
   padding: 0;
   background: #fff;
@@ -678,6 +714,9 @@ footer .contenedor-footer {
           font-size: 18px !important; }
       .main .lineas .container .contenedor .persona {
         visibility: hidden !important; } }
+.info.telas .big-title {
+  text-align: center;
+  text-shadow: 0 0 20px black; }
 .info.telas .info-1 {
   height: 800px;
   background-color: #F58634;
@@ -1334,7 +1373,7 @@ div.catalogo {
         border: 1px solid #003a99;
         box-shadow: 0px 0px 2px 0px #4f4f4f; }
 
-.catalogo .product-category-grid {
+.catalogo .product-category-grid, .catalogo .product-category-gallery {
   height: 760px;
   position: relative; }
 .catalogo .loading {

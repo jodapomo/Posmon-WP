@@ -1,9 +1,7 @@
 .main
 	overflow: hidden
 	.empresa
-		background: #000
 		.contenedor-titulo
-			background: url('../img/bgE3.png')
 			background-size: cover
 			background-position: center 0
 			background-repeat: no-repeat
@@ -54,13 +52,17 @@
 						margin: 0
 						width: 160px
 						padding: 71px 0
-						&.val1
+					&:nth-child(1)
+						p
 							background: $verde
-						&.val2
+					&:nth-child(2)
+						p
 							background: $amarillo
-						&.val3
+					&:nth-child(3)
+						p
 							background: $naranja
-						&.val4
+					&:nth-child(4)
+						p
 							background: $rojo
 		.mision-vision
 			.mision,
@@ -79,7 +81,6 @@
 					text-align: justify
 	.contacto
 		.contenedor-titulo
-			background: url('../img/bgE4.png')
 			background-size: cover
 			background-position: center 0
 			background-repeat: no-repeat

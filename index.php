@@ -60,8 +60,8 @@
         </div>
     </section>
 
-    <section class="empresa">
-        <div class="contenedor-titulo">
+    <section class="empresa" id="empresa">
+        <div class="contenedor-titulo" style="background-image: url(<?php echo cmb2_get_option( 'posmon_admin_empresa_options', 'fondo_empresa' );  ?>)">
             <div class="container">
                 <div class="row textos">
                     <div class="col-md-12">
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="parrafo col-md-12">
-                    <p>Somos una empresa Colombiana con más de una década de trayectoria en el mercado en la línea de uniformes y accesorios para el área de la salud, Con un estilo de vanguardia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi atque consectetur dolorum possimus debitis, odio assumenda quod, eos facere autem sunt reprehenderit facilis pariatur cumque distinctio officiis enim itaque perspiciatis.</p>
+                    <p><?php echo cmb2_get_option( 'posmon_admin_empresa_options', 'quienes_somos' );  ?></p>
                 </div>
             </div>
 
@@ -91,18 +91,17 @@
                     <h3 class="titulo">Nuestos Valores</h3>
                 </div>
                 <ul class="row">
-                    <li class="col-sm-6 col-md-3">
-                        <p class="val1">honestidad</p>
-                    </li>
-                    <li class="col-sm-6 col-md-3">
-                        <p class="val2">organización</p>
-                    </li>
-                    <li class="col-sm-6 col-md-3">
-                        <p class="val3">excelencia</p>
-                    </li>
-                    <li class="col-sm-6 col-md-3">
-                        <p class="val4">servicio</p>
-                    </li>
+
+                    <?php 
+                        $valores = cmb2_get_option( 'posmon_admin_empresa_options', 'nuestros_valores' );
+
+                        foreach ($valores as $key => $value) { ?>
+                            <li class="col-sm-6 col-md-3">
+                                <p><?php echo mb_strtolower( $value ) ?></p>
+                            </li>
+                        <?php 
+                        }
+                    ?>
                 </ul>
             </div>
 
@@ -110,23 +109,23 @@
                 <div class="col-md-6">
                         <div class="mision">
                             <h3 class="titulo">Misión</h3>
-                            <p>Somos una empresa Colombiana con más de una década de trayectoria en el mercado en la línea de uniformes y accesorios para el área de la salud, Con un estilo de vanguardia.</p>
+                            <p><?php echo cmb2_get_option( 'posmon_admin_empresa_options', 'mision' );  ?></p>
                         </div>
                 </div>
 
                 <div class="col-md-6">
                         <div class="vision">
                             <h3 class="titulo">Visión</h3>
-                            <p>Somos una empresa Colombiana con más de una década de trayectoria en el mercado en la línea de uniformes y accesorios para el área de la salud, Con un estilo de vanguardia.</p>
+                            <p><?php echo cmb2_get_option( 'posmon_admin_empresa_options', 'vision' );  ?></p>
                         </div>
                 </div>
             </div>
         </div>
     </section>
         
-    <section class="contacto">
+    <section class="contacto" id="contacto">
 
-        <div class="contenedor-titulo">
+        <div class="contenedor-titulo" style="background-image: url(<?php echo cmb2_get_option( 'posmon_admin_main_options', 'fondo_contacto' );  ?>)">
             <div class="container">
                 <div class="row textos">
                     <div class="col-md-12">
@@ -134,9 +133,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="logo">
-                <img src="img/logo-gray.png" alt="">
-            </div> -->
         </div>
 
         <div class="container">
@@ -144,15 +140,15 @@
                 <div class="contenedor-datos col-md-12">
                     <div class="datos">
                         <div class="logo">
-                            <img src="img/logo.png" alt="">
+                            <img src="<?php echo cmb2_get_option( 'posmon_admin_main_options', 'logo' ); ?>" alt="">
                         </div>
                         
                         <div class="textos">
                             <strong>Uniformes Posmon</strong>
-                            <p><i class="fa fa-envelope-o"></i> posmon@posmon.com</p>
-                            <p><i class="fa fa-phone"></i> +57(4) 2569781</p>
-                            <p><i class="fa fa-whatsapp"></i> 316 402 4564</p>
-                            <p><i class="fa fa-map-marker"></i> Medellín - Colombia</p>
+                            <p><i class="fa fa-envelope-o"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'email' );  ?></p>
+                            <p><i class="fa fa-phone"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'telefono' );  ?></p>
+                            <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'celular' );  ?></p>
+                            <p><i class="fa fa-map-marker"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'ciudad_pais' );  ?></p>
                         </div>
 
                     </div>
@@ -161,28 +157,24 @@
 
             <div class="row">
                 <div class="col-md-12">
+
                     <form class="formulario row">
-                        <div class="col-md-6">
-                            <input class="input-6" type="text" placeholder="Nombre y Apellido" name="nombre" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input class="input-6" type="email" placeholder="Correo" name="correo" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input class="input-6" type="text" placeholder="Ciudad" name="ciudad" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input class="input-6" type="text" placeholder="Teléfono" name="telefono" required>
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Asunto" name="asunto">
-                        </div>
-                        <div class="col-md-12">
-                            <textarea name="mensaje" placeholder="Mensaje"></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <input class="boton" type="submit" value="Enviar">
-                        </div>
+                        <?php 
+                            $args = array(
+                                'post_type' => 'page',
+                                'post_id' => 213,
+                                );
+
+                            $formulario = new WP_Query( $args );
+
+                            if($formulario->have_posts()) {
+                                while($formulario->have_posts()): $formulario->the_post(); 
+
+                                    the_content( );
+
+                                endwhile; wp_reset_postdata();
+                            }
+                        ?>
                     </form>
                 </div>
             </div>

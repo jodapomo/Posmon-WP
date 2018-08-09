@@ -165,7 +165,7 @@ $(document).ready(function(){
 				var grid = $(this).parents(".product-category-grid"),
 					product_template = $(grid).next(),
 					backButton = $(product_template).find(".control.back"),
-					loading = $(grid).find(".loading");
+					loading = $(this).parents(".content").find(".loading");
 				
 				$(this).on("click", function() {
 					
@@ -425,6 +425,9 @@ $(document).ready(function(){
 	$('.product-category-grid .item').clickableProduct();
 
 	$('.slider .big-title').setSizeBigTitle();
+
+	$('.info.telas .big-title').setSizeBigTitle();
+
 	
 	// CATALOGO ACORDEON
 	$('.catalogo .header').on('click' , function () {
@@ -596,9 +599,39 @@ $(document).ready(function(){
 		touch: true,
 		slideshow: false,
 		useCSS: true,
-		smoothHeight: true
 	});
+
+	smoothScrollIndex();
 
 
 });
+
+
+function smoothScrollIndex() {
+	if ( $(document.body).hasClass("home")) {
+
+		setTimeout(() => {
+
+			var laEmpresa = $('#empresa').offset().top;
+
+			$('#btn-empresa').on('click' , function (e) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop : laEmpresa
+				} , 700);
+			});
+		
+			var contacto = $('#contacto').offset().top;
+		
+			$('#btn-contacto').on('click' , function (e) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop : contacto
+				} , 800);
+			});
+
+		}, 1000);
+
+	}
+}
 
