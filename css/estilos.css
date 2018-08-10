@@ -669,7 +669,7 @@ footer .contenedor-footer {
       text-align: center; }
       .info.linea .info-2 .catalog-button .sub-container p {
         margin: 0;
-        margin-top: 10px;
+        margin-top: 3px;
         font-size: 18px;
         -webkit-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;

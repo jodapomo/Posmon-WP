@@ -171,9 +171,6 @@ $(document).ready(function(){
 					
 					var product = $(this);
 
-					repaintProduct( product_template, product );
-
-
 					$(document).on({
 						ajaxStart: function() { 
 							$(loading).show();
@@ -184,6 +181,8 @@ $(document).ready(function(){
 							$(product_template).show();
 						}    
 					});
+
+					repaintProduct( product_template, product );
 
 				});
 
@@ -335,6 +334,8 @@ function repaintProduct( template, product ) {
 			template += '<a class="product-thumbnail" full-image="' + fullSizeImage[index] + '">' + 
 							'<img src="' + thumbnails[index][0] + '">';
 						'</a>';
+			var img = new Image();
+			img.src = fullSizeImage[index];
 		}
 	
 		return template;
@@ -522,11 +523,9 @@ $(document).ready(function(){
 	$('.flexslider-big').flexslider({
 		animation: "slide",
 		touch: true,
-		// direction:"vertical",
-		slideshowSpeed: 7000,
+		slideshowSpeed: 5000,
 		animationSpeed: 800,   
-		// startAt: 3,  
-		slideshow: false,
+		slideshow: true,
 		useCSS: false,
 		start: function(){
 			$('.slider.main.flex-active-slide .big-title').animateCss('fadeInDown');
