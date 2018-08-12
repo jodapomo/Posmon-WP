@@ -96,7 +96,7 @@
                         $valores = cmb2_get_option( 'posmon_admin_empresa_options', 'nuestros_valores' );
 
                         foreach ($valores as $key => $value) { ?>
-                            <li class="col-sm-6 col-md-3">
+                            <li class="col-md-3 col-sm-3">
                                 <p><?php echo mb_strtolower( $value ) ?></p>
                             </li>
                         <?php 
@@ -158,7 +158,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="formulario row">
+                    <div class="formulario row">
                         <?php 
                             $args = array(
                                 'post_type' => 'page',
@@ -175,7 +175,7 @@
                                 endwhile; wp_reset_postdata();
                             }
                         ?>
-                    </form>
+                    </div>
                 </div>
             </div>
 

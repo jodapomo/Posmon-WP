@@ -129,8 +129,11 @@ body {
       padding-right: 80px;
       padding-bottom: 50px; }
   .main .contacto .formulario {
+    margin: 0 auto;
     margin-top: 50px;
-    text-align: center; }
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%; }
     .main .contacto .formulario input,
     .main .contacto .formulario textarea {
       border: 2px solid #cecece;
@@ -138,7 +141,7 @@ body {
       padding: 15px 20px;
       font-size: 20px;
       color: #000;
-      margin-bottom: 20px;
+      margin-top: 20px;
       width: 100%;
       outline: none; }
       .main .contacto .formulario input:focus,
@@ -149,8 +152,8 @@ body {
       border: 5px solid transparent;
       color: #fff;
       width: 141px;
+      margin-bottom: 15px;
       min-width: 100px;
-      margin-bottom: 40px;
       transition: all 0.3s ease-in-out; }
       .main .contacto .formulario .boton:focus {
         border: 5px solid #094d92; }
@@ -161,6 +164,8 @@ body {
       min-width: 100%;
       min-height: 150px;
       max-height: 350px; }
+    .main .contacto .formulario .wpcf7-response-output {
+      font-size: 21px; }
   .main .contacto .contenedor-datos {
     padding: 0; }
     .main .contacto .contenedor-datos .datos {
@@ -203,6 +208,10 @@ body {
   .main .empresa .mision-vision .mision, .main .empresa .mision-vision .vision {
     margin-right: 0;
     margin-left: 0; } }
+@media screen and (max-width: 767.98px) {
+  .empresa .valores p {
+    width: 100% !important;
+    padding: 20px 0 !important; } }
 header {
   overflow: hidden; }
   header .container {
@@ -419,6 +428,9 @@ footer .contenedor-footer {
       padding-bottom: 42.5px;
       padding-right: 20px; }
 
+@media screen and (max-width: 600px) {
+  footer .datos .logo {
+    text-align: center !important; } }
 .main .lineas {
   margin-top: 11px; }
   .main .lineas .container {
@@ -604,21 +616,25 @@ footer .contenedor-footer {
     -moz-animation-duration: 1.5s;
     -ms-animation-duration: 1.5s;
     -o-animation-duration: 1.5s; }
-  .info.linea .info-1 .slider.blur-bg .texto {
-    text-align: right; }
-    .info.linea .info-1 .slider.blur-bg .texto .titulo {
-      visibility: hidden; }
-      .info.linea .info-1 .slider.blur-bg .texto .titulo .med-title {
-        font-size: 4.3vw;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
-        font-weight: 700; }
-    .info.linea .info-1 .slider.blur-bg .texto .descripcion {
-      visibility: hidden; }
-  .info.linea .info-1 .slider.blur-bg .imagen {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden; }
-    .info.linea .info-1 .slider.blur-bg .imagen img {
-      visibility: hidden; }
+  .info.linea .info-1 .slider.blur-bg {
+    background-size: cover;
+    background-position: center 0;
+    background-repeat: no-repeat; }
+    .info.linea .info-1 .slider.blur-bg .texto {
+      text-align: right; }
+      .info.linea .info-1 .slider.blur-bg .texto .titulo {
+        visibility: hidden; }
+        .info.linea .info-1 .slider.blur-bg .texto .titulo .med-title {
+          font-size: 4.3vw;
+          text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+          font-weight: 700; }
+      .info.linea .info-1 .slider.blur-bg .texto .descripcion {
+        visibility: hidden; }
+    .info.linea .info-1 .slider.blur-bg .imagen {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden; }
+      .info.linea .info-1 .slider.blur-bg .imagen img {
+        visibility: hidden; }
   .info.linea .info-1 .slider.full-bg {
     background-size: cover;
     background-position: center 0;

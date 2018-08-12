@@ -19,10 +19,7 @@
 				
 				<div class="redes col-sm-6 col-md-2 hidden-md hidden-lg">
 					<div class="box">
-						<div class="telefono">
-							<p><i class="fa fa-phone"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'telefono' );  ?></p>
-                            <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'celular' );  ?></p>
-						</div>
+						
 						
 						<?php 
 							$args = array(
@@ -35,6 +32,12 @@
 
 							wp_nav_menu( $args );
 						?>
+
+						<div class="telefono">
+							<p><i class="fa fa-phone"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'telefono' );  ?></p>
+                            <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'celular' );  ?></p>
+							<p><i class="fa fa-envelope-o"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'email' );  ?></p>
+						</div>
 						
 					</div>
 				</div>
@@ -82,8 +85,9 @@
 						</nav> -->
 						
 						<div class="telefono">
-							<p><i class="fa fa-phone"></i> +57(4) 2569781</p>
-							<p><i class="fa fa-whatsapp"></i> 316 402 4564</p>
+							<p><i class="fa fa-phone"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'telefono' );  ?></p>
+                            <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'celular' );  ?></p>
+							<!-- <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'email' );  ?></p> -->
 						</div>
 					</div>
 				</div>
