@@ -209,7 +209,7 @@
                                                         if($productos->have_posts()) {
                                                             while($productos->have_posts()): $productos->the_post();
                                                                 ?>
-                                                                    <li class="col-lg-3 col-md-4 col-sm-6 item-container">
+                                                                    <li class="col-lg-3 col-md-4 col-sm-4 col-xs-6 item-container">
                                                                         <div class="item" id-producto="<?php the_ID() ?>" onmouseover="this.style.border='1px solid <?php echo get_post_meta( $lineaID,'posmon_campos_lineas_color_catalogo', true) ?>'" onmouseout="this.style.border='1px solid #ddd'">
                                                                             <div class="featured-image">
                                                                                 <img src="<?php echo get_post_meta( get_the_ID() ,'posmon_campos_productos_imagen_destacada_producto', true) ?>" alt="">
@@ -305,7 +305,20 @@
                                                 </nav>
                                             </div>
                                             <div class="row product-content">
-                                                <div class="col-md-5 product-description">
+                                                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 col-lg-push-5 product-gallery">
+                                                    <div class="big-image-container">
+                                                        <img src="">
+                                                        <div class="controls-container">
+                                                            <div class="control prev">
+                                                                <i class="fa fa-angle-left"></i>
+                                                            </div>
+                                                            <div class="control next">
+                                                                <i class="fa fa-angle-right"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 col-lg-pull-7 product-description">
                                                     <div class="row product-name">
                                                         <span class="row">Ref.</span>
                                                         <div class="row">
@@ -327,19 +340,7 @@
                                                     </div>
                                                     <div class="thumbnail-gallery-container"></div>
                                                 </div>
-                                                <div class="col-md-7  product-gallery">
-                                                    <div class="big-image-container">
-                                                        <img src="">
-                                                        <div class="controls-container">
-                                                            <div class="control prev">
-                                                                <i class="fa fa-angle-left"></i>
-                                                            </div>
-                                                            <div class="control next">
-                                                                <i class="fa fa-angle-right"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="loading" style="background-image: url(<?php echo get_template_directory_uri() . '/img/ajax-loader.gif' ?>)"></div>
                                         </div>

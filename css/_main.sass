@@ -1,5 +1,12 @@
 .main
 	overflow: hidden
+	.construccion
+		// height: calc(100vh - 114px)
+		background-size: contain
+		background-position: center 0
+		background-repeat: no-repeat
+		img
+			width: 100%
 	.empresa
 		.contenedor-titulo
 			background-size: cover
@@ -40,30 +47,56 @@
 				margin-bottom: 10px
 			ul
 				list-style: none
+				margin-bottom: 0
+				padding-left: 15px
+				padding-right: 15px
 				li
 					text-align: center
-					p
-						background: #000
+					float: left
+					width: calc(100% / 6)
+					p.valor
 						color: #fff
 						display: inline-block
 						font-size: 20px
 						text-shadow: 0 0 6px rgba(0,0,0,0.9)
 						line-height: 18px
 						margin: 0
-						width: 160px
+						min-width: 160px
+						width: 100%
 						padding: 71px 0
 					&:nth-child(1)
-						p
-							background: $verde
+						p.valor
+							background: $azul
 					&:nth-child(2)
-						p
-							background: $amarillo
+						p.valor
+							background: $verde
 					&:nth-child(3)
-						p
-							background: $naranja
+						p.valor
+							background: $amarillo
 					&:nth-child(4)
-						p
+						p.valor
+							background: $naranja
+					&:nth-child(5)
+						p.valor
 							background: $rojo
+					&:nth-child(6)
+						p.valor
+							background: $morado
+			.descripcion-valor
+				background: $azul
+				padding: 20px 50px
+				width: 100%
+				transition: all .3s ease
+				-webkit-transition: all .3s ease
+				-moz-transition: all .3s ease
+				p
+					color: #fff
+					text-align: left
+					margin-bottom: 0
+					text-shadow: 0 0 6px rgba(0,0,0,0.9)
+					transition: all .3s ease
+					-webkit-transition: all .3s ease
+					-moz-transition: all .3s ease
 		.mision-vision
 			.mision,
 			.vision
@@ -133,6 +166,7 @@
 				max-height: 350px
 			.wpcf7-response-output 
 				font-size: 21px
+				border-radius: 5px
 		.contenedor-datos
 			padding: 0
 			.datos
@@ -161,16 +195,37 @@
 					margin-bottom: 20px
 				li
 					margin-bottom: 10px
+					text-align: left!important
+					width: 100%!important
+					display: flex
+					align-items: center
+					p.valor
+						width: 20%!important
+						display: inline-block
+						text-align: center
+					div.descripcion-valor-responsive
+						padding: 9px
+						background: #fff
+						width: 80%	
+						text-align: justify
+						font-size: 15px
+						display: inline-block
+						margin-left: 10px
+						height: 160px
+						overflow: hidden
+						p
+							margin-bottom: 0
 			.mision-vision
 				.mision
 					margin-bottom: 0
+		
 
 @media screen and (max-width: 640px)
 	.main
 		.empresa
-			.quienes-somos
-				p
-					font-size: 16px
+			p
+				font-size: 15px
+				line-height: 22.5px
 		.contacto,.empresa
 			.contenedor-titulo
 				.titulo
@@ -196,11 +251,21 @@
 				.mision,.vision
 					margin-right: 0
 					margin-left: 0
+					padding-right: 0
+					padding-left: 0
 
-@media screen and (max-width: 767.98px) 
-	.empresa
-		.valores
-			p
-				width: 100%!important
-				padding: 20px 0!important
+@media screen and (max-width: 500px) 
+	.main
+		.empresa
+			.valores
+				li
+					display: block
+					p.valor
+						width: 100%!important
+						padding: 20px 0!important
+						font-size: 22px!important
+					div.descripcion-valor-responsive
+						width: 100%
+						margin: 0
+						height: auto
 

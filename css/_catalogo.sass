@@ -128,9 +128,10 @@ div.catalogo
 				.text
 					text-align: center
 		.product-content
+			height: 658px
 			.product-description
 				background-color: #fff
-				height: 700px
+				height: 100%
 				font-size: 16px
 				padding: 0
 				padding-left: 20px
@@ -147,8 +148,8 @@ div.catalogo
 					font-size: 16px
 					font-weight: bold
 				ul
-					list-style-position: inside
 					overflow: hidden
+					padding-left: 10px
 					li
 						margin-bottom: 2px
 						margin-left: 15px
@@ -169,7 +170,7 @@ div.catalogo
 					&:hover
 						background: #f2f2f2
 			.thumbnail-gallery-container
-				width: 412px
+				width: 86%
 				margin: 0 auto
 				display: flex
 				flex-flow: wrap
@@ -206,7 +207,7 @@ div.catalogo
 				.big-image-container
 					background-color: #fff
 					position: relative
-					height: 700px
+					height: 100%
 					border: 1px solid #ddd
 					overflow: hidden
 					img
@@ -388,6 +389,7 @@ div.catalogo
 					color: #23527c!important
 			a.control
 				width: 15%
+				min-width: 174.25px
 				height: 100%
 				cursor: pointer
 				&.prev
@@ -463,7 +465,7 @@ div.catalogo
 						i
 							right: 8%
 		.grid
-			height: 700px
+			min-height: 658px
 			border: 1px solid #ddd
 			border-bottom: 0
 			padding-top: 15px
@@ -471,7 +473,7 @@ div.catalogo
 				margin-bottom: 15px
 				list-style-type: none
 				.item
-					height: 327px
+					height: 306px
 					border-radius: 5px
 					border: 1px solid #ddd
 					box-shadow: 0px 0px 2px 0px #ddd
@@ -481,11 +483,8 @@ div.catalogo
 						height: 85%
 						text-align: center
 						border-bottom: 1px solid #ddd
-						position: relative
 						img
 							height: 100%
-							position: absolute
-							right: 0
 					.short-description
 						height: 15%
 						.reference
@@ -525,7 +524,7 @@ div.catalogo
 						box-shadow: 0px 0px 2px 0px #4f4f4f
 .catalogo
 	.product-category-grid, .product-category-gallery
-		height: 760px
+		// height: 760px
 		position: relative
 	.loading
 		height: 100%
@@ -535,4 +534,139 @@ div.catalogo
 		background: rgba( 255, 255, 255, .8 ) 50% 50% no-repeat
 		display: none
 						
-								
+@media screen and (max-width: 1199.98px) 
+	.catalogo
+		.product-category-gallery
+			.product-content
+				.product-description
+					border-right: 1px solid #ddd
+				.product-gallery
+					.big-image-container
+						text-align: center
+						border-bottom: 0
+						img
+							position: relative
+					.controls-container
+						top: 0
+@media screen and (max-width: 767.98px) 
+	section.catalogo
+		.titulo-catalogo
+			font-size: 30px
+	div.catalogo
+		.header
+			height: 50px
+			.textos
+				h3,p
+					line-height: 44px
+				h3
+					font-size: 20px
+					margin-left: 3px
+				p
+					font-size: 14px
+		.paginator
+			nav
+				.pages-container
+					a
+						width: 30px
+	section.catalogo
+		.catalogo
+			.product-category-grid
+				.grid
+					.item-container
+						padding-right: 6px
+						padding-left: 6px
+						margin-bottom: 6px
+						.item
+							height: auto
+							.featured-image
+								height: auto
+								overflow: hidden
+								img
+									width: 100%
+									position: relative
+							.short-description
+								height: auto
+								.reference
+									width: 100%
+									height: auto
+									padding-top: 0
+									display: inline-block
+									span
+										font-size: 10px
+									.name
+										line-height: 1
+										font-size: 14px
+								.gender
+									border-top: 1px solid #ddd
+									border-left: 0
+									width: 100%
+									display: inline-block
+									padding-left: 5px
+									text-align: center
+									.icon
+										padding-top: 0
+										height: auto
+										font-size: 18px
+										line-height: 26px
+										display: inline-block
+										&.unisex
+											i:first-child
+												margin-right: -6px
+									.text
+										height: auto
+										text-align: center
+										font-size: 10px
+										display: inline-block
+										position: relative
+										top: -3px
+										line-height: 0
+										padding-bottom: 0
+										margin-bottom: 0
+			.product-category-gallery
+				.controls
+					height: 40px
+					.back-button-container
+						a.control
+							span.icon-container
+								font-size: 70px
+							span.text-container
+								font-size: 17px
+								padding-top: 0
+								line-height: 19px
+								p
+									text-align: center
+									span
+										font-size: 20px
+					.references-nav-controls
+						a.control
+							span.icon-container
+								font-size: 50px
+							span.text-container
+								font-size: 14px
+								text-align: center
+@media screen and (max-width: 991.98px)  
+	section.catalogo
+		.catalogo
+			.product-category-grid
+				.grid
+					.item-container
+						padding-right: 6px
+						padding-left: 6px
+						margin-bottom: 6px
+						.item
+							height: auto
+							.featured-image
+								height: auto
+								overflow: hidden
+								img
+									width: 100%
+									position: relative
+@media screen and (max-width: 600px)
+	div.catalogo
+		.paginator
+			nav
+				a.control
+					min-width: auto
+					width: 50%!important
+				.pages-container
+					display: none

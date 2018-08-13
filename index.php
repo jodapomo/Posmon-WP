@@ -1,8 +1,12 @@
 <?php get_header() ?>
 
 <section class="main">
+
+    <section class="construccion" style="background-image: url(<?php echo get_template_directory_uri() . '/img/construccion.jpg' ?>)">
+        <img src="<?php echo get_template_directory_uri() . '/img/construccion.jpg' ?>" style="visibility: hidden;" />
+    </section>
     
-    <section class="lineas">
+    <section class="lineas hidden">
         <div class="container">
             <div class="row">
 
@@ -82,7 +86,17 @@
                 </div>
 
                 <div class="parrafo col-md-12">
-                    <p><?php echo cmb2_get_option( 'posmon_admin_empresa_options', 'quienes_somos' );  ?></p>
+                    <?php echo wpautop(cmb2_get_option( 'posmon_admin_empresa_options', 'quienes_somos' ));  ?>
+                </div>
+            </div>
+
+            <div class="quienes-somos row">
+                <div class="titulo col-md-12">
+                    <h3 class="titulo">Nuestra Historia</h3>
+                </div>
+
+                <div class="parrafo col-md-12">
+                    <?php echo wpautop(cmb2_get_option( 'posmon_admin_empresa_options', 'historia' ));  ?></p>
                 </div>
             </div>
 
@@ -94,15 +108,28 @@
 
                     <?php 
                         $valores = cmb2_get_option( 'posmon_admin_empresa_options', 'nuestros_valores' );
-
-                        foreach ($valores as $key => $value) { ?>
-                            <li class="col-md-3 col-sm-3">
-                                <p><?php echo mb_strtolower( $value ) ?></p>
+                        
+                        foreach ($valores as $value) { ?>
+                            <li>
+                                <p  class="valor"><?php echo mb_strtolower( $value['valor'] ) ?></p>
+                                <div class="descripcion-valor-responsive hidden-lg hidden-md">
+                                    <?php echo wpautop($value['desc'] ) ?>
+                                </div>
                             </li>
                         <?php 
                         }
                     ?>
                 </ul>
+                <div class="descripcion-valor hidden-sm hidden-xs">
+                    <?php 
+                        $valores = cmb2_get_option( 'posmon_admin_empresa_options', 'nuestros_valores' );
+
+                        foreach ($valores as $index => $value) { ?>
+                            <p class="<?php if ($index != 0){ echo "hidden"; }  ?>"><?php echo $value['desc'] ?></p>
+                        <?php 
+                        }
+                    ?>
+                </div>
             </div>
 
             <div class="mision-vision row">
@@ -162,7 +189,7 @@
                         <?php 
                             $args = array(
                                 'post_type' => 'page',
-                                'post_id' => 213,
+                                'pagename' => 'contacto',
                                 );
 
                             $formulario = new WP_Query( $args );

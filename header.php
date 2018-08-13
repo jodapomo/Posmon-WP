@@ -57,8 +57,8 @@
 					<ul class="row">
 						<li><a class="inicio" href="<?php echo get_home_url( ) ?>">Inicio</a></li>
 						<li><a id="btn-empresa" class="empresa" href="<?php echo get_home_url( ) ?>/#empresa">La Empresa</a></li>
-						<li><a class="productos" href="<?php echo get_permalink(178) ?>">Productos</a></li>
-						<li><a class="telas" href="<?php echo get_permalink(165) ?>">Telas</a></li>
+						<li class="hidden"><a class="productos" href="<?php echo get_permalink(178) ?>">Productos</a></li>
+						<li class="hidden"><a class="telas" href="<?php echo get_permalink(165) ?>">Telas</a></li>
 						<li><a id="btn-contacto" class="contacto" href="<?php echo get_home_url( ) ?>/#contacto">Contáctenos</a></li>
 					</ul>
 				</nav>
@@ -87,7 +87,6 @@
 						<div class="telefono">
 							<p><i class="fa fa-phone"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'telefono' );  ?></p>
                             <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'celular' );  ?></p>
-							<!-- <p><i class="fa fa-whatsapp"></i> <?php echo cmb2_get_option( 'posmon_admin_main_options', 'email' );  ?></p> -->
 						</div>
 					</div>
 				</div>

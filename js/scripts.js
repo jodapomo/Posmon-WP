@@ -141,6 +141,15 @@ $(document).ready(function(){
 		},
 
 		setCatalogPagination: function () {
+			var itemPerPage,
+				width = $(window).width();
+
+			if( width > 1200 ) {
+				itemPerPage = 8;
+			} else {
+				itemPerPage = 6;
+			}
+
 			return this.each(function () {
 				var holder = $(this).find(".holder"),
 					items   = $(this).find(".items"),
@@ -152,7 +161,7 @@ $(document).ready(function(){
 					containerID : items.attr('id'),
 					previous    : prev,
 					next        : next,
-					perPage : 8,
+					perPage : itemPerPage,
 					midRange : 20,
 				});
 				
@@ -393,7 +402,7 @@ function repaintProduct( template, product ) {
 
 function resizeFrontPageLine() {
 	var rh = $(window).height(),
-		rw = $(window).width()
+		rw = $(window).width(),
 		rel = rw / rh;
 
 	if (rw >= 1900 ) {
@@ -514,10 +523,53 @@ $(document).ready(function(){
 
 		$('.menu ul').slideToggle('slow');
 
+		smoothScrollIndex();
+
 		return false;
 	});
 
-	
+	// VALORES
+	function nextValor() {
+		var desc_actual = $('.valores .descripcion-valor p:not(.hidden)' ),
+			desc_container = $( '.valores .descripcion-valor' ),
+			index = $(desc_actual).index();
+
+		if ( index == 5 ) {
+			index = 0;
+		} else {
+			index += 1;
+		}
+
+		var next = $('.valores ul.row li').get(index),
+			desc = $('.valores .descripcion-valor p:nth-child(' + (index + 1)  + ')' ),
+			color = $(next).children('p.valor').css('background-color');
+
+		$(desc_actual).addClass("hidden");
+		$(desc).removeClass("hidden");
+		$(desc_container).css('background-color', color);
+	}
+
+	var valoresSlideShow = setInterval(function(){ nextValor(); }, 4000);
+
+	$('.valores ul.row li').on('click mouseover', function () {
+		clearInterval(valoresSlideShow);
+
+		var index = $(this).index() + 1,
+			desc_container = $( '.valores .descripcion-valor' ),
+			desc = $('.valores .descripcion-valor p:nth-child(' + index + ')' ),
+			color = $(this).children('p.valor').css('background-color'),
+			desc_actual = $('.valores .descripcion-valor p:not(.hidden)' );
+
+		$(desc_actual).addClass("hidden");
+		$(desc).removeClass("hidden");
+		$(desc_container).css('background-color', color);
+
+	});
+
+	$('.valores ul.row li').on('mouseout', function () {
+		valoresSlideShow = setInterval(function(){ nextValor(); }, 4000);
+	})
+
 
 	// HOOK FLEXSLIDER
 	$('.flexslider-big').flexslider({
@@ -608,7 +660,7 @@ $(document).ready(function(){
 
 function smoothScrollIndex() {
 	if ( $(document.body).hasClass("home")) {
-
+		
 		setTimeout(() => {
 
 			var laEmpresa = $('#empresa').offset().top;
