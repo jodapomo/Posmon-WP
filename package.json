@@ -1,0 +1,23 @@
+{
+  "name": "posmon-wp",
+  "version": "1.0.0",
+  "description": "Wordpress theme for Posmon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodapomo/Posmon-WP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jodapomo/Posmon-WP/issues"
+  },
+  "homepage": "https://github.com/jodapomo/Posmon-WP#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0"
+  }
+}

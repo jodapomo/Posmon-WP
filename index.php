@@ -2,11 +2,11 @@
 
 <section class="main">
 
-    <section class="construccion" style="background-image: url(<?php echo get_template_directory_uri() . '/img/construccion.jpg' ?>)">
+    <section class="construccion hidden" style="background-image: url(<?php echo get_template_directory_uri() . '/img/construccion.jpg' ?>)">
         <img src="<?php echo get_template_directory_uri() . '/img/construccion.jpg' ?>" style="visibility: hidden;" />
     </section>
     
-    <section class="lineas hidden">
+    <section class="lineas">
         <div class="container">
             <div class="row">
 

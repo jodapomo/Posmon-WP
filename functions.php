@@ -33,6 +33,7 @@ function posmon_scripts() {
     wp_register_script(  'smoothScroll', get_template_directory_uri() . "/js/SmoothScroll.min.js", array(), '1.0', true);
     wp_register_script(  'flexsliderJs', get_template_directory_uri() . "/js/jquery.flexslider-min.js", array(), '1.0', true);
     wp_register_script(  'jPages', get_template_directory_uri() . "/js/jPages.min.js", array(), '1.0', true);
+    wp_register_script(  'touchSwipe', get_template_directory_uri() . "/js/jquery.touchSwipe.min.js", array(), '1.0', true);
     wp_register_script(  'mainScripts', get_template_directory_uri() . "/js/scripts.js", array(), '1.0', true);
 
     // Enqueue Scripts
@@ -40,6 +41,7 @@ function posmon_scripts() {
     wp_enqueue_script('smoothScroll');
     wp_enqueue_script('flexsliderJs');
     wp_enqueue_script('jPages');
+    wp_enqueue_script('touchSwipe');
     wp_enqueue_script('mainScripts');
 
     wp_localize_script( 
@@ -188,3 +190,25 @@ function mytheme_admin_bar_render() {
 }
 
 add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
+
+/**
+ * Hide editor on specific pages.
+ *
+ */
+add_action( 'admin_head', 'hide_editor' );
+
+function hide_editor() {
+
+    global $pagenow;
+    if( !( 'post.php' == $pagenow ) ) return;
+
+    global $post;
+    // Get the Post ID.
+    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+    if( !isset( $post_id ) ) return;
+
+    $template_file = get_post_meta($post_id, '_wp_page_template', true);
+    if($template_file == 'insumos.php'){
+    remove_post_type_support('page', 'editor');
+    }
+}

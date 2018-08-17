@@ -57,8 +57,8 @@
 					<ul class="row">
 						<li><a class="inicio" href="<?php echo get_home_url( ) ?>">Inicio</a></li>
 						<li><a id="btn-empresa" class="empresa" href="<?php echo get_home_url( ) ?>/#empresa">La Empresa</a></li>
-						<li class="hidden"><a class="productos" href="<?php echo get_permalink(178) ?>">Productos</a></li>
-						<li class="hidden"><a class="telas" href="<?php echo get_permalink(165) ?>">Telas</a></li>
+						<li><a class="productos" href="<?php echo get_permalink( get_page_by_path( 'todas-las-lineas' ) ) ?>">Productos</a></li>
+						<li><a class="telas" href="<?php echo get_permalink( get_page_by_path( 'insumos' ) ) ?>">Insumos</a></li>
 						<li><a id="btn-contacto" class="contacto" href="<?php echo get_home_url( ) ?>/#contacto">Contáctenos</a></li>
 					</ul>
 				</nav>
