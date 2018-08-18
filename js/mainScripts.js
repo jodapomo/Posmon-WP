@@ -487,11 +487,6 @@ function repaintProduct( template, product ) {
 		
 }
 
-
-
-
-
-
 function resizeFrontPageLine() {
 	var rh = $(window).height(),
 		rw = $(window).width(),
