@@ -215,7 +215,11 @@ body {
       text-align: center;
       margin-bottom: 15px; }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991.98px) {
+  .main .empresa .contenedor-titulo {
+    background-attachment: scroll; }
+  .main .contacto .contenedor-titulo {
+    background-attachment: scroll; }
   .main .empresa .valores {
     margin-bottom: 0; }
     .main .empresa .valores .titulo {
@@ -802,6 +806,9 @@ footer .contenedor-footer {
   .main .lineas .container .nombre h2 {
     font-size: 20px !important; } }
 @media screen and (max-width: 991.98px) {
+  .info.linea .info-1 {
+    background-attachment: scroll; }
+
   .main .lineas .container .nombre h2 {
     font-size: 20px !important; }
 

@@ -386,7 +386,7 @@
                                                             <h6>Opciones:</h6>
                                                             <ul class="options"></ul>
 
-                                                            <a class="telas-button" href="<?php echo get_permalink( 165 ) ?>\#catalogo-telas" target="_blank">
+                                                            <a class="telas-button" href="<?php echo get_permalink( get_page_by_path( 'insumos' ) ) ?>\#catalogo-telas" target="_blank">
                                                                 <img src="<?php echo get_template_directory_uri() ?>\img\telas.png">
                                                                 <span>Catálogo de telas</span>
                                                             </a>

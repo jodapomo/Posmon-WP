@@ -494,30 +494,31 @@ function repaintProduct( template, product ) {
 
 
 function resizeFrontPageLine() {
-	var rh = $(window).height(),
-		rw = $(window).width(),
-		rel = rw / rh;
+	$('.main .lineas').addClass('tallest');
+	// var rh = $(window).height(),
+	// 	rw = $(window).width(),
+	// 	rel = rw / rh;
 
-	if (rw >= 1900 ) {
-		$('.main .lineas').removeClass('tallest');
-		$('.main .lineas').addClass('full-view');
+	// if (rw >= 1200 ) {
+	// 	$('.main .lineas').removeClass('tallest');
+	// 	$('.main .lineas').addClass('full-view');
 
-	} 
-	else if( rw < 992 ) {
-		$('.main .lineas').removeClass('full-view');
-		$('.main .lineas').addClass('tallest');
-	}	
-	else {
-		if( rel < 1.5 || rel > 1.7 ) {
-			$('.main .lineas').removeClass('full-view');
-			$('.main .lineas').addClass('tallest');
+	// } 
+	// else if( rw < 992 ) {
+	// 	$('.main .lineas').removeClass('full-view');
+	// 	$('.main .lineas').addClass('tallest');
+	// }	
+	// else {
+	// 	if( rel < 1.5 || rel > 1.7 ) {
+	// 		$('.main .lineas').removeClass('full-view');
+	// 		$('.main .lineas').addClass('tallest');
 
-		} 
-		else if ( rel > 1.5 ) {
-			$('.main .lineas').removeClass('tallest');
-			$('.main .lineas').addClass('full-view');
-		}
-	}
+	// 	} 
+	// 	else if ( rel > 1.5 ) {
+	// 		$('.main .lineas').removeClass('tallest');
+	// 		$('.main .lineas').addClass('full-view');
+	// 	}
+	// }
 }
 
 
