@@ -591,7 +591,7 @@ $(document).ready(function(){
 	// RESIZE SLIDER IMAGE
 
 		// On Init
-	setTimeout(() => {
+	setTimeout(function () {
 		$('.slider').resizeSliderImage();
 	}, 200);
 	
@@ -745,7 +745,7 @@ $(document).ready(function(){
 function smoothScrollIndex() {
 	if ( $(document.body).hasClass("home")) {
 		
-		setTimeout(() => {
+		setTimeout(function () {
 
 			var laEmpresa = $('#empresa').offset().top;
 
