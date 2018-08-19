@@ -619,11 +619,7 @@ footer .contenedor-footer {
       height: 100%; }
       .info.linea .info-1 .flexslider-big .slider .contenedor {
         height: 100%;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap; }
+        margin: 0; }
       .info.linea .info-1 .flexslider-big .slider .med-title {
         font-size: 4.3vw;
         text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
