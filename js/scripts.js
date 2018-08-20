@@ -510,8 +510,29 @@ function resizeFrontPageLine() {
 		else if ( rel > 1.5 ) {
 			$('.main .lineas').removeClass('tallest');
 			$('.main .lineas').addClass('full-view');
+		} else {
+			$('.main .lineas').removeClass('full-view');
+			$('.main .lineas').addClass('tallest');
 		}
 	}
+}
+
+function checkrontPageLinesOpen() {
+	setTimeout(function () {
+		lineasHeight = $(".main .lineas").height();
+
+		if ( lineasHeight < 200 ) {
+			$('.main .lineas').removeClass('tallest');
+			$('.main .lineas').removeClass('full-view');
+
+			setTimeout(function () {
+				$('.main .lineas').addClass('tallest');
+			}, 1000);
+
+		}
+	
+		
+	}, 1000);
 }
 
 
@@ -582,7 +603,9 @@ $(document).ready(function(){
 
 	// RESIZE INDEX SQUARES
 
+
 	resizeFrontPageLine();
+
 
 	$(window).resize(function () {
 		resizeFrontPageLine();
@@ -608,7 +631,16 @@ $(document).ready(function(){
 
 		$('.menu ul').slideToggle('slow');
 
-		smoothScrollIndex();
+
+		if( $(this).hasClass("open") ) {
+			menuLocation =  $(this).offset().top;
+
+			$('html, body').animate({
+				scrollTop : menuLocation
+			} , 600);
+		}
+
+		// smoothScrollIndex();
 
 		return false;
 	});
@@ -730,13 +762,14 @@ $(document).ready(function(){
 	
 
 	$('.flexslider-content').flexslider({
-		animation: "fade",
+		animation: "slide",
 		touch: true,
-		slideshow: false,
 		useCSS: true,
 	});
 
 	smoothScrollIndex();
+
+	checkrontPageLinesOpen();
 
 
 });
@@ -744,28 +777,26 @@ $(document).ready(function(){
 
 function smoothScrollIndex() {
 	if ( $(document.body).hasClass("home")) {
-		
-		setTimeout(function() {
 
+		$('#btn-empresa').on('click' , function (e) {
+			e.preventDefault();
 			var laEmpresa = $('#empresa').offset().top;
-
-			$('#btn-empresa').on('click' , function (e) {
-				e.preventDefault();
-				$('html, body').animate({
-					scrollTop : laEmpresa
-				} , 700);
-			});
+			$('html, body').animate({
+				scrollTop : laEmpresa
+			} , 700);
+		});
+	
 		
+	
+		$('#btn-contacto').on('click' , function (e) {
+			e.preventDefault();
+
 			var contacto = $('#contacto').offset().top;
-		
-			$('#btn-contacto').on('click' , function (e) {
-				e.preventDefault();
-				$('html, body').animate({
-					scrollTop : contacto
-				} , 800);
-			});
 
-		}, 1000);
+			$('html, body').animate({
+				scrollTop : contacto
+			} , 800);
+		});
 
 	}
 }
