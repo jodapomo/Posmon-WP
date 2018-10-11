@@ -10,3 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Tags: 
 Text Domain: posmon
 */
+
+.wpcf7-recaptcha > div {
+    margin: 10px auto 0px auto;
+}

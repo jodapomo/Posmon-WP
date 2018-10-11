@@ -765,6 +765,7 @@ $(document).ready(function(){
 		animation: "slide",
 		touch: true,
 		useCSS: true,
+		slideshow: false
 	});
 
 	smoothScrollIndex();

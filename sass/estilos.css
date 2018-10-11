@@ -1409,21 +1409,44 @@ div.catalogo {
         .catalogo .product-category-gallery .product-content .product-description ul li {
           margin-bottom: 2px;
           margin-left: 15px; }
+      .catalogo .product-category-gallery .product-content .product-description .button-container {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px; }
       .catalogo .product-category-gallery .product-content .product-description .telas-button {
-        display: block;
         border-radius: 5px;
         border: 1px solid #ddd;
         text-decoration: none;
-        width: 205px;
+        max-width: 205px;
+        min-width: 205px;
         padding: 5px;
-        margin: 0 auto;
-        margin-top: 20px;
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease; }
         .catalogo .product-category-gallery .product-content .product-description .telas-button img {
           height: 45px; }
         .catalogo .product-category-gallery .product-content .product-description .telas-button:hover {
+          background: #f2f2f2; }
+      .catalogo .product-category-gallery .product-content .product-description .contacto-button {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        text-decoration: none;
+        width: 90px;
+        padding: 5px;
+        height: 57px;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        text-align: center; }
+        .catalogo .product-category-gallery .product-content .product-description .contacto-button i {
+          font-size: 30px; }
+        .catalogo .product-category-gallery .product-content .product-description .contacto-button span {
+          display: block;
+          position: relative;
+          bottom: 3px; }
+        .catalogo .product-category-gallery .product-content .product-description .contacto-button:hover {
           background: #f2f2f2; }
     .catalogo .product-category-gallery .product-content .thumbnail-gallery-container {
       width: 86%;
@@ -1449,6 +1472,7 @@ div.catalogo {
         width: 80px;
         overflow: hidden;
         text-align: center;
+        cursor: pointer;
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease; }
@@ -1457,6 +1481,9 @@ div.catalogo {
       .catalogo .product-category-gallery .product-content .thumbnail-gallery-container .product-thumbnail:not(.active) {
         border: 1px solid #ddd;
         box-shadow: none; }
+        .catalogo .product-category-gallery .product-content .thumbnail-gallery-container .product-thumbnail:not(.active):hover {
+          border: 1px solid #c1c1c1;
+          box-shadow: 0px 0px 1px 0px #c1c1c1; }
     .catalogo .product-category-gallery .product-content .product-gallery {
       height: 100%;
       padding: 0; }
@@ -1933,6 +1960,9 @@ div.catalogo {
   section.catalogo .catalogo .product-category-gallery .product-content .thumbnail-gallery-container .product-thumbnail {
     height: 60px;
     width: 60px; } }
+@media screen and (max-width: 348px) {
+  .catalogo .product-category-gallery .product-content .product-description .contacto-button {
+    margin-top: 10px; } }
 @media screen and (max-width: 342px) {
   section.catalogo .catalogo .product-category-gallery .product-content .product-details {
     padding-bottom: 130px; }

@@ -386,10 +386,17 @@
                                                             <h6>Opciones:</h6>
                                                             <ul class="options"></ul>
 
-                                                            <a class="telas-button" href="<?php echo get_permalink( get_page_by_path( 'insumos' ) ) ?>\#catalogo-telas" target="_blank">
-                                                                <img src="<?php echo get_template_directory_uri() ?>\img\telas.png">
-                                                                <span>Catálogo de telas</span>
-                                                            </a>
+                                                            <div class="button-container">
+                                                                <a class="telas-button" href="<?php echo get_permalink( get_page_by_path( 'insumos' ) ) ?>\#catalogo-telas" target="_blank">
+                                                                    <img src="<?php echo get_template_directory_uri() ?>\img\telas.png">
+                                                                    <span>Catálogo de telas</span>
+                                                                </a>
+                                                                <a class="contacto-button" href="<?php echo get_home_url( ) ?>/#contacto" target="_blank">
+                                                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                                    <span>Contacto</span>
+                                                                </a>
+                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="thumbnail-gallery-container"></div>
                                                     </div>
