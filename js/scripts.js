@@ -371,8 +371,7 @@ function repaintProduct( template, product ) {
 	var product_url = url_rest + product_id;
 
 	cleanProduct(template);
-
-				
+	
 	$.ajax({
 		dataType: 'json',
 		url: product_url
@@ -389,6 +388,7 @@ function repaintProduct( template, product ) {
 			descripcion = $(template).find("div.descripcion"),
 			options = $(template).find("ul.options"),
 			gallery = $(template).find("div.thumbnail-gallery-container");	
+			boton_telas = $(template).find("a.telas-button");	
 			
 
 		$(title).append(product.title.rendered);
@@ -402,6 +402,12 @@ function repaintProduct( template, product ) {
 		$(gallery).append( galeriaTemplate( product.galeria ) );
 
 		$(template).find("div.product-content").productGallery();
+
+		if ( product.boton_telas == "no" ) {
+			$(boton_telas).css("display", "none");
+		} else {
+			$(boton_telas).css("display", "block");
+		}
 	}
 
 	function cleanProduct(template) {

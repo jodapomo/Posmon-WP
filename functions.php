@@ -95,6 +95,15 @@ function posmon_rest_api() {
         )
     );
 
+    register_rest_field(
+        'productos',
+        'boton_telas',
+        array(
+            'get_callback'      => 'posmon_producto_boton_telas',
+            'schema'            => null,
+            'update_callback'   => null,
+        )
+    );
 }
 
 
@@ -161,6 +170,19 @@ function posmon_producto_galeria () {
         return '';
     }
 
+}
+
+function posmon_producto_boton_telas () {
+    global $post;
+    $post_id = $post->ID;
+
+    $result = get_post_meta( $post_id, 'posmon_campos_productos_boton_telas_producto', true );
+
+    if ( $result == "" ){
+        $result = "si";
+    }
+
+    return $result;
 }
 
 
