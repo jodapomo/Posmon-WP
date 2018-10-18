@@ -1,0 +1,277 @@
+.single-product
+    margin-top: 20px
+    margin-bottom: 20px
+    .product-content
+        .row 
+            margin: 0
+        height: 658px
+        .product-name
+            border-bottom: 1px solid #ddd
+            width: 100%
+            margin-bottom: 20px
+            margin-top: 10px
+            float: left
+            span
+                margin-left: 4px
+                color: #878787
+                display: block
+            h3
+                font-size: 45px
+                margin: 0
+                width: 78%
+                display: inline-block
+            .gender
+                width: 20%
+                height: 49px
+                display: inline-block
+                color: #878787
+                opacity: 0.7
+                position: absolute
+                top: 25px
+                .icon
+                    padding-top: 1px
+                    height: 65%
+                    text-align: center
+                    font-size: 25px
+                    &.unisex
+                        i:first-child
+                            margin-right: -6px
+                .text
+                    text-align: center
+        .product-description
+            background-color: #fff
+            height: 100%
+            font-size: 16px
+            padding: 0
+            padding-left: 20px
+            padding-right: 20px
+            border: 1px solid #ddd
+            border-right: 0
+            overflow: hidden
+            .descripcion
+                p
+                    margin-bottom: 15px
+                    text-align: justify
+            h6
+                color: #337ab7
+                font-size: 16px
+                font-weight: bold
+            ul
+                overflow: hidden
+                padding-left: 10px
+                li
+                    margin-bottom: 2px
+                    margin-left: 15px
+            .button-container
+                display: flex
+                flex-flow: wrap
+                justify-content: space-around
+                align-items: center
+                margin-top: 20px
+            .telas-button
+                border-radius: 5px
+                border: 1px solid #ddd
+                text-decoration: none
+                max-width: 205px
+                min-width: 205px
+                padding: 5px
+                -webkit-transition: all .3s ease
+                -o-transition: all .3s ease
+                transition: all .3s ease
+                img
+                    height: 45px
+                &:hover
+                    background: #f2f2f2
+            .contacto-button
+                border-radius: 5px
+                border: 1px solid #ddd
+                text-decoration: none
+                width: 90px
+                padding: 5px
+                height: 57px
+                -webkit-transition: all .3s ease
+                -o-transition: all .3s ease
+                transition: all .3s ease
+                text-align: center
+                i
+                    font-size: 30px
+                span 
+                    display: block
+                    position: relative
+                    bottom: 3px
+                &:hover
+                    background: #f2f2f2
+        .thumbnail-gallery-container
+            width: 86%
+            margin: 0 auto
+            display: flex
+            flex-flow: wrap
+            justify-content: center
+            overflow: hidden
+            position: absolute
+            margin-bottom: 10px
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            padding-left: 1px
+            padding-top: 1px
+            .product-thumbnail
+                display: inline-block
+                border: 1px solid #003a99
+                box-shadow: 0px 0px 1px 0px rgba(0, 58, 153,1)
+                margin-right: 2px
+                margin-bottom: 2px
+                height: 80px
+                width: 80px
+                overflow: hidden
+                text-align: center
+                cursor: pointer
+                -webkit-transition: all .3s ease
+                -o-transition: all .3s ease
+                transition: all .3s ease
+                img
+                    height: 100%
+            .product-thumbnail:not(.active)
+                border: 1px solid #ddd
+                box-shadow: none
+                &:hover
+                    border: 1px solid #c1c1c1
+                    box-shadow: 0px 0px 1px 0px #c1c1c1
+        .product-gallery
+            height: 100%
+            padding: 0
+            .big-image-container
+                background-color: #fff
+                position: relative
+                height: 100%
+                border: 1px solid #ddd
+                overflow: hidden
+                img
+                    height: 100%
+                    position: absolute
+                    right: 0
+                    z-index: 999
+                .controls-container
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    z-index: 1000
+                    display: flex
+                    justify-content: space-between
+                    .control
+                        display: inline-block
+                        height: 100%
+                        width: 20%
+                        cursor: pointer
+                        i
+                            font-size: 60px
+                            transition: all .3s ease-in-out
+                            color: #c6c6c6
+                        &.next
+                            display: flex
+                            align-items: center
+                            justify-content: flex-end
+                            i
+                                position: relative
+                                right: 10%
+                        &.prev
+                            display: flex
+                            align-items: center
+                            justify-content: flex-start
+                            i
+                                position: relative
+                                left: 10%
+                    .control:hover
+                        i
+                            color: #337ab7
+                        &.next
+                            i
+                                right: 8%
+                        &.prev
+                            i
+                                left: 8%
+
+@media screen and (max-width: 1199.98px) 
+    .single-product.mobile
+        .product-content
+            height: auto
+            .product-description
+                border-right: 1px solid #ddd
+            .product-details
+                padding-bottom: 185px
+            .product-gallery
+                .big-image-container
+                    height: 600px
+                    text-align: center
+                    border-bottom: 0
+                    img
+                        position: relative
+                .controls-container
+                    top: 0
+
+@media screen and (max-width: 670px)
+    .single-product.mobile
+        .product-content
+            height: auto
+            .product-gallery
+                .big-image-container
+                    height: auto
+                    img
+                        width: 100%
+                        position: relative
+                        z-index: 999
+        .product-name
+            .name
+                font-size: 30px
+            .gender
+                top: 12px
+
+                top: 12px
+
+@media screen and (max-width: 600px)
+    .single-product.mobile
+        .product-content
+            .product-name
+                .name
+                    width: 100%
+                .gender
+                    position: relative
+                    top: 0!important
+                    width: 100%
+                    border-top: 1px solid #ddd
+
+@media screen and (max-width: 500px)
+    .single-product.mobile
+        .product-content
+            .product-description
+                p,li
+                    font-size: 14px!important
+            .thumbnail-gallery-container
+                width: 95%
+
+@media screen and (max-width: 450px)
+    .single-product.mobile
+        .product-content
+            .product-details
+                padding-bottom: 150px
+            .thumbnail-gallery-container
+                .product-thumbnail
+                    height: 60px
+                    width: 60px
+
+@media screen and (max-width: 348px)
+    .single-product.mobile
+        .product-content
+            .product-description
+                .contacto-button
+                    margin-top: 10px
+
+@media screen and (max-width: 342px)
+    .single-product.mobile
+        .product-content
+            .product-details
+                padding-bottom: 130px
+            .thumbnail-gallery-container
+                .product-thumbnail
+                    height: 50px
+                    width: 50px
