@@ -393,7 +393,15 @@ function repaintProduct( template, product ) {
 
 		$(title).append(product.title.rendered);
 
-		$(gender).append( genderTemplate( product.genero ) );
+		if ( product.genero == "oculto" ) {
+			$(gender).css("display", "none");
+			$(title).css("width", "100%");
+		} else {
+			$(gender).css("display", "inline-block");
+			$(title).css("width", "78%");
+
+			$(gender).append( genderTemplate( product.genero ) );
+		}
 		
 		$(descripcion).append( product.desc );
 

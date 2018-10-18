@@ -268,45 +268,55 @@
                                                                                     <img src="<?php echo get_post_meta( get_the_ID() ,'posmon_campos_productos_imagen_destacada_producto', true) ?>" alt="">
                                                                                 </div>
                                                                                 <div class="short-description">
-                                                                                    <div class="reference">
+                                                                                    <?php 
+                                                                                        $gender = get_post_meta( get_the_ID() ,'posmon_campos_productos_genero_producto', true);
+                                                                                    ?>
+
+                                                                                    <div class="reference" <?php if ( $gender == "oculto" ) { echo "style='width: 100%'";} ?>>
                                                                                         <span>Ref.</span>
                                                                                         <h3 class="name"><?php echo the_title() ?></h3>
                                                                                     </div>
-                                                                                    <div class="gender">
-                                                                                        <?php 
-                                                                                            $gender = get_post_meta( get_the_ID() ,'posmon_campos_productos_genero_producto', true);
+                                                                                    <?php  ?>
+                                                                                    <?php 
+                                                                                        if ( $gender != 'oculto' ) {
+                                                                                    ?>
 
-                                                                                            if ( $gender == 'unisex' ) {
-                                                                                                ?>
-                                                                                                    <div class="icon unisex">
-                                                                                                        <i class="fa fa-female"></i>
-                                                                                                        <i class="fa fa-male"></i>
-                                                                                                    </div>
-                                                                                                    <div class="text">
-                                                                                                        unisex
-                                                                                                    </div>
-                                                                                                <?php 
-                                                                                            } else if ( $gender == 'femenino' ) {
-                                                                                                ?>
-                                                                                                    <div class="icon">
-                                                                                                        <i class="fa fa-female"></i>
-                                                                                                    </div>
-                                                                                                    <div class="text">
-                                                                                                        femenino
-                                                                                                    </div>
-                                                                                                <?php 
-                                                                                            } else {
-                                                                                                ?>
-                                                                                                    <div class="icon">
-                                                                                                        <i class="fa fa-male"></i>
-                                                                                                    </div>
-                                                                                                    <div class="text">
-                                                                                                        masculino
-                                                                                                    </div>
-                                                                                                <?php 
-                                                                                            }
-                                                                                        ?>
-                                                                                    </div>
+                                                                                        <div class="gender">
+                                                                                            <?php
+
+                                                                                                if ( $gender == 'unisex' ) {
+                                                                                                    ?>
+                                                                                                        <div class="icon unisex">
+                                                                                                            <i class="fa fa-female"></i>
+                                                                                                            <i class="fa fa-male"></i>
+                                                                                                        </div>
+                                                                                                        <div class="text">
+                                                                                                            unisex
+                                                                                                        </div>
+                                                                                                    <?php 
+                                                                                                } else if ( $gender == 'femenino' ) {
+                                                                                                    ?>
+                                                                                                        <div class="icon">
+                                                                                                            <i class="fa fa-female"></i>
+                                                                                                        </div>
+                                                                                                        <div class="text">
+                                                                                                            femenino
+                                                                                                        </div>
+                                                                                                    <?php 
+                                                                                                } else if ( $gender == 'masculino' ){
+                                                                                                    ?>
+                                                                                                        <div class="icon">
+                                                                                                            <i class="fa fa-male"></i>
+                                                                                                        </div>
+                                                                                                        <div class="text">
+                                                                                                            masculino
+                                                                                                        </div>
+                                                                                                    <?php 
+                                                                                                }
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                         </li>
